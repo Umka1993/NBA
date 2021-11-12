@@ -25,13 +25,6 @@ export const SignUpForm = (): JSX.Element => {
     }
 
 
-    let error
-    if ((Object.keys(errors).length === 0)) {
-        error = errors
-    } else {
-        error = errors;
-    }
-
     return (
         <div className={s.form} onSubmit={handleSubmit(onSubmit)}>
             <form action="#">
@@ -39,7 +32,7 @@ export const SignUpForm = (): JSX.Element => {
                     <div className={s.title}>
                         <h2>Sign Up</h2>
                     </div>
-                    <InputName error={error}
+                    <InputName errors={errors}
                                label='Name'
                                register={register}
                                disabled={false}
@@ -49,37 +42,29 @@ export const SignUpForm = (): JSX.Element => {
                     <Input disabled={false}
                            label='Login'
                            register={register}
-                           error={error}
+                           errors={errors}
                            name='Login'
 
                     />
                     <InputPassword disabled={false}
                                    label='Password'
                                    register={register}
-                                   error={error}
+                                   errors={errors}
                                    name='newPassword'
                                    message={message}
                     />
-                    {/*<InputPasswordAgain*/}
-                    {/*    disabled={false}*/}
-                    {/*    label='Enter your password again'*/}
-                    {/*    register={register}*/}
-                    {/*    error={error}*/}
-                    {/*    name='confirmPassword'*/}
-                    {/*    message={message}*/}
 
-                    {/*/>*/}
                     <InputPassword
                         disabled={false}
                         label='Enter your password again'
                         register={register}
-                        error={error}
+                        errors={errors}
                         name='confirmPassword'
                         message={message}
 
                     />
 
-                    <InputAgreement error={error}
+                    <InputAgreement errors={errors}
                                     type='radio'
                                     register={register}
                                     label='I accept the agreement'

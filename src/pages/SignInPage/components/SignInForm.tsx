@@ -11,13 +11,6 @@ export const SignInForm = (): JSX.Element => {
     const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
 
 
-    let error
-    if ((Object.keys(errors).length === 0)) {
-        error = errors
-    } else {
-        error = errors
-    }
-debugger
     return (
         <div className={s.form} onSubmit={handleSubmit(onSubmit)}>
             <form action="#">
@@ -28,14 +21,14 @@ debugger
                     <Input disabled={false}
                            label='Login'
                            register={register}
-                           error={error}
+                           errors={errors}
                            name='Login'
 
                     />
                     <InputPassword disabled={false}
                                    label='Password'
                                    register={register}
-                                   error={error}
+                                   errors={errors}
                                    name='Password'
                     />
                     <div className={s.formButton}>

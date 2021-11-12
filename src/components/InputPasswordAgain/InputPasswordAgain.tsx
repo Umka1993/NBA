@@ -8,7 +8,7 @@ import {Input} from '../Input/Input'
 export const InputPasswordAgain = ({
                                        disabled,
                                        register,
-                                       error,
+                                       errors,
                                        label,
                                        name,
                                        message
@@ -22,8 +22,8 @@ export const InputPasswordAgain = ({
     }, [passwordShown])
 
     const isDisabled = useMemo(() => {
-        return error && disabled ? !disabled : disabled
-    }, [error, disabled])
+        return errors && disabled ? !disabled : disabled
+    }, [errors, disabled])
 
 
 
@@ -38,7 +38,7 @@ export const InputPasswordAgain = ({
                    eyeOpen={eyeOpen}
                    type='password'
                    register={register}
-                   error={error}
+                   errors={errors}
                    name={name}
                    message={message}
             />

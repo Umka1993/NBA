@@ -1,6 +1,8 @@
+import {DeepMap, Message, MultipleFieldErrors, Ref} from "react-hook-form";
+
 export interface IInputProps {
     disabled?: boolean,
-    error: unknown
+    errors: FieldErrors
     togglePasswordShown?: () => void
     isDisabled?: boolean
     passwordShown?: boolean
@@ -21,3 +23,16 @@ export type Inputs = {
     confirmPassword: boolean
 
 };
+export type FieldError = {
+    type: string;
+    ref?: Ref;
+    types?: MultipleFieldErrors;
+    message?: Message;
+};
+
+type FieldErrors<
+    TFieldValues extends FieldValues = FieldValues
+    > = DeepMap<TFieldValues, FieldError>;
+
+type FieldValues = Record<string, any>;
+

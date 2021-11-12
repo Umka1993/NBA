@@ -146,7 +146,7 @@
       border: 1px solid var(--red);
     }
   }
-  span{
+  .error+span{
     color: var(--lightestRed);
   }
 }

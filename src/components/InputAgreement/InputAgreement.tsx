@@ -1,5 +1,6 @@
 import s from '../Input/styleInput.module.scss';
 import {IInputProps} from "../../../main";
+import {ErrorMessage} from "@hookform/error-message";
 
 
 export const InputAgreement = (
@@ -8,18 +9,19 @@ export const InputAgreement = (
             isDisabled,
             type,
             register,
-            error,
+            errors,
             name
         }: IInputProps): JSX.Element => {
 
 
-        const isErrorKey = Object.keys(error);
+        const isErrorKey = Object.keys(errors);
 
 
         return (
             <div className={s.inputRadioBlock}>
-                <div className={`${isErrorKey.includes(name) ? s.error : ''} ${s.inputRadioWrap}`}>
-                    <input {...register(name, {required: true})}
+                <div className={`${Object.keys(errors).length !== 0 && isErrorKey.includes(name)
+                    ? s.error : ''} ${s.inputRadioWrap}`}>
+                    <input {...register(name, {required: "This is required."})}
                            className={`${isDisabled ? s.disabled : ''} `}
                            type={type}
                            id={label}
@@ -28,8 +30,12 @@ export const InputAgreement = (
                     {label && <label htmlFor={label}>{label}</label>}
 
                 </div>
+                <ErrorMessage
+                    errors={errors}
+                    name={name}
+                    render={({message}) => <span>{message}</span>}
+                />
 
-                {isErrorKey.includes(name) && (<span>You must be accept the agreement.</span>)}
             </div>
         )
     }

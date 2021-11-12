@@ -1,5 +1,6 @@
 import s from './styleInput.module.scss'
 import {IInputProps} from "../../../main";
+import {ErrorMessage} from '@hookform/error-message';
 
 
 export const Input = (
@@ -12,18 +13,20 @@ export const Input = (
             eyeOpen,
             type,
             register,
-            error,
+            errors,
             name,
             message
         }: IInputProps): JSX.Element => {
 
 
-        const isErrorKey = Object.keys(error);
+        const isErrorKey = Object.keys(errors);
+
         return (
             <div className={s.inputBlock}>
                 {label && <label htmlFor={name}>{label}</label>}
-                <div className={`${isErrorKey.includes(name) ? s.error : ''} ${s.inputWrap}`}>
-                    <input {...register(name, {required: true},)}
+                <div className={`${Object.keys(errors).length !== 0 && isErrorKey.includes(name)
+                    ? s.error : ''} ${s.inputWrap}`}>
+                    <input {...register(name, {required: "This is required."},)}
                            className={`${isDisabled ? s.disabled : ''} `}
                            type={!isDisabled ? (passwordShown ? type : 'text') : type}
                            id={name}
@@ -39,7 +42,12 @@ export const Input = (
                         : null}
                 </div>
 
-                {isErrorKey.includes(name) && (<span>Wrong {label}. Please, try again.</span>)}
+                <ErrorMessage
+                    errors={errors}
+                    name={name}
+                    render={({message}) => <span>{message}</span>}
+                />
+
                 {message && (<span>{message}</span>)}
             </div>
         )

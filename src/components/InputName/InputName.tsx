@@ -6,10 +6,9 @@ export const InputName = (
         {
             label,
             register,
-            error,
+            errors,
             name
         }: IInputProps): JSX.Element => {
-
 
 
         return (
@@ -19,7 +18,7 @@ export const InputName = (
                     label={label}
                     type='text'
                     register={register}
-                    error={error}
+                    errors={errors}
                     name={name}
                 />
             </>
