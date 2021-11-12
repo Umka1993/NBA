@@ -5,14 +5,14 @@ import {IInputProps} from "../../../main";
 import {Input} from '../Input/Input'
 
 
-export const InputPassword = ({
-                                  disabled,
-                                  register,
-                                  error,
-                                  label,
-                                  name,
-                                  message
-                              }: IInputProps): JSX.Element => {
+export const InputPasswordAgain = ({
+                                       disabled,
+                                       register,
+                                       error,
+                                       label,
+                                       name,
+                                       message
+                                   }: IInputProps): JSX.Element => {
 
     const [passwordShown, setPasswordShown] = useState(true)
 
@@ -24,6 +24,8 @@ export const InputPassword = ({
     const isDisabled = useMemo(() => {
         return error && disabled ? !disabled : disabled
     }, [error, disabled])
+
+
 
     return (
         <>
@@ -39,7 +41,6 @@ export const InputPassword = ({
                    error={error}
                    name={name}
                    message={message}
-
             />
         </>
 

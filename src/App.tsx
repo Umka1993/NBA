@@ -1,12 +1,14 @@
 import React from 'react';
-import AuthPage from "./pages/authorization/authPage";
+import {SignInPage} from "./pages/SignInPage/SignInPage";
 import './assets/style/main.module.scss'
 import '../src/assets/style/variables.scss'
+import {SignUpPage} from "./pages/SignUpPage/SignUpPage";
 
 const App = () => {
     return (
         <div>
-            <AuthPage/>
+            {/*<SignInPage/>*/}
+            <SignUpPage/>
         </div>
     );
 };

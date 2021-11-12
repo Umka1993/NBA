@@ -1,93 +1,43 @@
-
-
 @font-face {
   font-family: 'AvenirBook';
   src: local('AvenirBook'), url(../font/Avenir-Book.woff) format('woff');
 }
+
 @font-face {
   font-family: 'Avenir';
   src: local('AvenirMedium'), url(../font/Avenir-Medium.woff) format('woff');
 }
 
-*{
+* {
   box-sizing: border-box
 }
-.inputBlock{
-  display: flex;
-  flex: 1;
-  height: 40px;
-  flex-direction: column;
-  margin-bottom: 10px;
-  width: 100%;
-  label{
-    margin-bottom: 5px;
-    font-family: var(--AvenirMedium);
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: var(--grey);
+body{
+  margin: 0;
+}
+p{
+  margin-block-start: 0;
+  margin-block-end: 0
+}
 
-  }
-  .inputWrap {
-    display: flex;
-    flex-direction: row;
-    background: var(--lightGrey);
-  }
-  input{
-    //width: 100%;
-    background: var(--lightGrey);
-    border-radius: 4px;
-    font-family: var(--AvenirMedium);
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: var(--darkGrey);
-    border: none;
-    padding: 8px 12px;
-    flex: 8;
-    outline: none;
+h2{
+  margin-block-start: 0;
+  margin-block-end: 0
+}
 
-    &:hover{
-      background: var(--lightestGrey);
-      border: none;
-    }
-    &:focus{
-      background: #F6F6F6;
-      box-shadow: 0px 0px 5px #D9D9D9;
-      border: none;
-    }
-    &:focus-visible{
-      border: none;
-    }
-
+.container {
+  width: 1140px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+button{
+  &:hover{
+    background: var(--lightRed);
   }
-  .disabled{
-    background: #F6F6F6;
-    border: none;
-    pointer-events: none
-
+  &:active{
+    background: var(--darkRed);
   }
-
-  .error{
-    border: 1px solid #FF768E;
-    border-radius: 4px;
-  }
-  span{
-    font-family: 'Avenir', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 150%;
-    color: #FF768E;
-    margin-top: 5px;
+  &:disabled{
+    background: var(--lightestGrey);
   }
 }
-.icon {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-}
+
