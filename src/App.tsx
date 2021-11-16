@@ -3,13 +3,25 @@ import {SignInPage} from "./pages/SignInPage/SignInPage";
 import './assets/style/main.module.scss'
 import '../src/assets/style/variables.scss'
 import {SignUpPage} from "./pages/SignUpPage/SignUpPage";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
-const App = () => {
+
+const App = (): JSX.Element => {
+
+
     return (
-        <div>
-            {/*<SignInPage/>*/}
-            <SignUpPage/>
-        </div>
+        <>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<SignInPage/>}/>
+                    <Route path='/signUpPage' element={<SignUpPage/>}/>
+                </Routes>
+
+            </BrowserRouter>
+
+        </>
+
+
     );
 };
 

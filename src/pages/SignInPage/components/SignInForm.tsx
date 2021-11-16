@@ -4,6 +4,7 @@ import {Input} from "../../../components/Input/Input";
 import {InputPassword} from "../../../components/InputPassword/InputPassword";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {Inputs} from "../../../../main";
+import {Link} from "react-router-dom";
 
 
 export const SignInForm = (): JSX.Element => {
@@ -35,7 +36,9 @@ export const SignInForm = (): JSX.Element => {
                         <button type="submit">Sign In</button>
                     </div>
                     <div className={s.signUpRow}>
-                        <p>Not a member yet? <a href="#"> Sign up</a></p>
+                        <p>Not a member yet?
+                            <Link to='/signUpPage'> Sign up</Link>
+                        </p>
                     </div>
                 </div>
             </form>
