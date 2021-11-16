@@ -1,8 +1,8 @@
-import {useState, useMemo, useCallback} from "react";
+import {useCallback, useMemo, useState} from "react";
 import eyeClose from '../../assets/icon/eyeClose.svg'
 import eyeOpen from '../../assets/icon/eyeOpen.svg'
 import {IInputProps} from "../../../main";
-import {Input} from '../Input/Input'
+import {InputPassword} from "../InputPassword/InputPassword";
 
 
 export const InputPasswordAgain = ({
@@ -26,10 +26,9 @@ export const InputPasswordAgain = ({
     }, [errors, disabled])
 
 
-
     return (
         <>
-            <Input disabled={disabled}
+            <InputPassword disabled={disabled}
                    label={label}
                    togglePasswordShown={togglePasswordShown}
                    isDisabled={isDisabled}

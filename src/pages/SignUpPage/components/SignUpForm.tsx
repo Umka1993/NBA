@@ -9,11 +9,13 @@ import {InputAgreement} from "../../../components/InputAgreement/InputAgreement"
 import {Link} from "react-router-dom";
 import {signAuthData} from '../../../modules/authorization/authorizationThunk'
 import {useAppDispatch} from "../../../core/redux/hooks/redux";
+import {InputPasswordAgain} from "../../../components/InputPasswordAgain/InputPasswordAgain";
 
 export const SignUpForm = (): JSX.Element => {
     const USER_NAME = 'userName'
     const LOGIN = 'login'
     const PASSWORD = 'password'
+    const PASSWORDAGAIN = 'passwordAgain'
     const ACCEPTAGREEMENT = 'acceptAgreement'
     const {register, handleSubmit, formState: {errors}}
         = useForm<Inputs>();
@@ -65,12 +67,12 @@ export const SignUpForm = (): JSX.Element => {
                                    message={message}
                     />
 
-                    <InputPassword
+                    <InputPasswordAgain
                         disabled={false}
                         label='Enter your password again'
                         register={register}
                         errors={errors}
-                        name={PASSWORD}
+                        name={PASSWORDAGAIN}
                         message={message}
 
                     />
