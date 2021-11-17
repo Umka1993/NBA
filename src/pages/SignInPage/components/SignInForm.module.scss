@@ -61,6 +61,7 @@
   }
 }
 
+
 @media (min-width: 992px) and (max-width: 1199px) {
   .formButton {
     button {
@@ -84,7 +85,13 @@
   .colWrap {
     display: none;
   }
+  .error{
+    background: #FF5761;
+    border-radius: 4px;
+    align-items: center;
+  }
 }
+
 
 @media (max-width: 575px) {
   .formWrap {

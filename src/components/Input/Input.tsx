@@ -33,11 +33,11 @@ export const Input = (
                            id={name}
                     />
                     {eyeClose && eyeOpen ?
-                        <div className={s.icon}>
+                        <div className={s.icon} onClick={togglePasswordShown}>
                             <img
                                 src={!isDisabled ? (!passwordShown ? eyeOpen : eyeClose) : eyeClose}
                                 alt="eye img"
-                                onClick={togglePasswordShown}
+
                             />
                         </div>
                         : null}

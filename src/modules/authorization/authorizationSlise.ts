@@ -1,23 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit'
 import {signAuthData} from "./authorizationThunk";
 
-interface IAuthData {
-    name: string
-    isAuth: boolean
-    isLoading: boolean
-    error: string
-}
-
-const initialState: IAuthData = {
-    isAuth: false,
-    error: '',
-    name: '',
-    isLoading: false,
-}
-console.log(initialState.isAuth)
 const authorizationSlice = createSlice({
     name: 'auth',
-    initialState,
+    initialState: {
+        isAuth: false,
+        error: false,
+        name: '',
+        isLoading: false,
+    },
     reducers: {
         setAuthData(state) {
             state.isLoading = false
@@ -27,11 +18,11 @@ const authorizationSlice = createSlice({
     extraReducers: {
         [signAuthData.pending.type]: (state) => {
             state.isLoading = true
-            state.error = '';
+            state.error = false;
         },
         [signAuthData.fulfilled.type]: (state) => {
             state.isLoading = false
-            state.error = ''
+            state.error = false
             state.isAuth = true
             console.log('isAuth',state.isAuth)
         },

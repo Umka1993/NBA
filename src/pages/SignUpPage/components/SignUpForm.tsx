@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import s from "../../SignInPage/components/SignInForm.module.scss";
 import {Input} from "../../../components/Input/Input";
 import {InputPassword} from "../../../components/InputPassword/InputPassword";
@@ -11,19 +11,19 @@ import {signAuthData} from '../../../modules/authorization/authorizationThunk'
 import {useAppDispatch} from "../../../core/redux/hooks/redux";
 import {InputPasswordAgain} from "../../../components/InputPasswordAgain/InputPasswordAgain";
 
+
 export const SignUpForm = (): JSX.Element => {
     const USER_NAME = 'userName'
     const LOGIN = 'login'
     const PASSWORD = 'password'
     const PASSWORDAGAIN = 'passwordAgain'
     const ACCEPTAGREEMENT = 'acceptAgreement'
-    const {register, handleSubmit, formState: {errors}}
-        = useForm<Inputs>();
+    const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
 
-    const onSubmit: SubmitHandler<Inputs> = data =>
-        onVerifyNewPassword(data)
+    const onSubmit: SubmitHandler<Inputs> = data => onVerifyNewPassword(data)
 
     const [message, setMessage] = useState('');
+
 
     const dispatch = useAppDispatch()
 
@@ -32,14 +32,13 @@ export const SignUpForm = (): JSX.Element => {
             setMessage('The passwords dont match')
         } else {
             setMessage('')
-            //@ts-ignore
-            dispatch(signAuthData(data))
 
+            dispatch(signAuthData(data))
         }
     }
     return (
-        <div className={s.form} onSubmit={handleSubmit(onSubmit)}>
 
+        <div className={s.form} onSubmit={handleSubmit(onSubmit)}>
             <form action="#">
                 <div className={s.formWrap}>
                     <div className={s.title}>
@@ -98,6 +97,8 @@ export const SignUpForm = (): JSX.Element => {
             </form>
 
         </div>
+
+
 
     );
 };
