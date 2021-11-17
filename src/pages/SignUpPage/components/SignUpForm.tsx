@@ -6,10 +6,11 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {Inputs} from "../../../../main";
 import {InputName} from "../../../components/InputName/InputName";
 import {InputAgreement} from "../../../components/InputAgreement/InputAgreement";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {signAuthData} from '../../../modules/authorization/authorizationThunk'
 import {useAppDispatch} from "../../../core/redux/hooks/redux";
 import {InputPasswordAgain} from "../../../components/InputPasswordAgain/InputPasswordAgain";
+import {setAuthData} from "../../../modules/authorization/authorizationSlise";
 
 
 export const SignUpForm = (): JSX.Element => {
@@ -24,7 +25,7 @@ export const SignUpForm = (): JSX.Element => {
 
     const [message, setMessage] = useState('');
 
-
+    const navigate = useNavigate();
     const dispatch = useAppDispatch()
 
     const onVerifyNewPassword = (data) => {
@@ -32,12 +33,11 @@ export const SignUpForm = (): JSX.Element => {
             setMessage('The passwords dont match')
         } else {
             setMessage('')
-
             dispatch(signAuthData(data))
+            navigate('/')
         }
     }
     return (
-
         <div className={s.form} onSubmit={handleSubmit(onSubmit)}>
             <form action="#">
                 <div className={s.formWrap}>

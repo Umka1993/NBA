@@ -7,7 +7,6 @@ import {useAppSelector} from "../../core/redux/hooks/redux";
 export const SignUpPage = ():JSX.Element => {
     const {error, isLoading} = useAppSelector(state => state.setAuthDataReducer)
     return (
-
         <>
             {isLoading
                 &&

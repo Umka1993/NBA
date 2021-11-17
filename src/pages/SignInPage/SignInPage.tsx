@@ -4,7 +4,6 @@ import {SignInForm} from "./components/SignInForm";
 
 
 export const SignInPage = (): JSX.Element => {
-
     return (
         <div className={s.wrap}>
             <div className={s.colLeft}>

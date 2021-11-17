@@ -1,5 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 interface IData {
     acceptAgreement: string
@@ -8,6 +9,7 @@ interface IData {
     passwordAgain: string
     userName: string
 }
+
 
 export const signAuthData = createAsyncThunk(
     'auth/SignAuthData',
@@ -21,10 +23,12 @@ export const signAuthData = createAsyncThunk(
                     login: data.login,
                     password: data.password
                 },
-            })
+
+            }
+            )
             const token = response.data.token
             localStorage.setItem("SavedToken", token)
-
+            // debugger
             return response.data
 
         } catch (e) {
