@@ -3,33 +3,26 @@ import s from "../../SignInPage/components/SignInForm.module.scss";
 import {Input} from "../../../components/Input/Input";
 import {InputPassword} from "../../../components/InputPassword/InputPassword";
 import {SubmitHandler, useForm} from "react-hook-form";
-import {Inputs} from "../../../../main";
+import {FormNames} from "../../../../main";
 import {InputName} from "../../../components/InputName/InputName";
 import {InputAgreement} from "../../../components/InputAgreement/InputAgreement";
 import {Link, useNavigate} from "react-router-dom";
 import {signAuthData} from '../../../modules/authorization/authorizationThunk'
 import {useAppDispatch} from "../../../core/redux/hooks/redux";
 import {InputPasswordAgain} from "../../../components/InputPasswordAgain/InputPasswordAgain";
-import {setAuthData} from "../../../modules/authorization/authorizationSlise";
+import {UnpackNestedValue} from "react-hook-form/dist/types/form";
 
 
 export const SignUpForm = (): JSX.Element => {
     const USER_NAME = 'userName'
-    const LOGIN = 'login'
-    const PASSWORD = 'password'
+    const LOGIN = 'Login'
+    const PASSWORD = 'Password'
     const PASSWORDAGAIN = 'passwordAgain'
     const ACCEPTAGREEMENT = 'acceptAgreement'
-    const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
+    const {register, handleSubmit, formState: {errors}} = useForm<FormNames>();
 
-    const onSubmit: SubmitHandler<Inputs> = data => onVerifyNewPassword(data)
-
-    const [message, setMessage] = useState('');
-
-    const navigate = useNavigate();
-    const dispatch = useAppDispatch()
-
-    const onVerifyNewPassword = (data) => {
-        if (data.newPassword !== data.confirmPassword) {
+    const onSubmit = (data:UnpackNestedValue<FormNames>) => {
+        if (data.Password !== data.passwordAgain) {
             setMessage('The passwords dont match')
         } else {
             setMessage('')
@@ -37,6 +30,10 @@ export const SignUpForm = (): JSX.Element => {
             navigate('/')
         }
     }
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch()
+
     return (
         <div className={s.form} onSubmit={handleSubmit(onSubmit)}>
             <form action="#">

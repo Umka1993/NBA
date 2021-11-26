@@ -1,11 +1,10 @@
 import {createAsyncThunk} from '@reduxjs/toolkit'
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
 
 interface IData {
     acceptAgreement: string
-    login: string
-    password: string
+    Login: string
+    Password: string
     passwordAgain: string
     userName: string
 }
@@ -14,14 +13,15 @@ interface IData {
 export const signAuthData = createAsyncThunk(
     'auth/SignAuthData',
     async (data:IData, thunkAPI) => {
+        console.log(data)
         try {
             const response = await axios({
                 method: "post",
                 url: "http://dev.trainee.dex-it.ru/api/Auth/SignUp",
                 data: {
                     userName: data.userName,
-                    login: data.login,
-                    password: data.password
+                    login: data.Login,
+                    password: data.Password
                 },
 
             }

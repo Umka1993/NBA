@@ -17,12 +17,10 @@ export const Input = (
             name,
             message
         }: IInputProps): JSX.Element => {
-    
-
 
         const isErrorKey = Object.keys(errors);
 
-        return (
+    return (
             <div className={s.inputBlock}>
                 {label && <label htmlFor={name}>{label}</label>}
                 <div className={`${Object.keys(errors).length !== 0 && isErrorKey.includes(name)

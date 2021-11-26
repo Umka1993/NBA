@@ -1,29 +1,37 @@
-import {DeepMap, Message, MultipleFieldErrors, Ref} from "react-hook-form";
+import {DeepMap, Message, MultipleFieldErrors, Path, Ref, UseFormRegister, ValidationRule} from "react-hook-form";
 
 
-export interface IInputProps {
+export interface IInputProps{
     disabled?: boolean,
-    errors: FieldErrors
+    errors?: FieldErrors
     togglePasswordShown?: () => void
     isDisabled?: boolean
     passwordShown?: boolean
     eyeClose?: string
     eyeOpen?: string
     type?: string
-    label?: string
-    register?: (name: string, RegisterOptions?) => ({ onChange, onBlur, name, ref })
+    register: UseFormRegister<FormNames>
     errorKey?: string
-    name?: string
+    name: Path<FormNames>
     message?: string
+    label?: string,
+}
+export type FormNames = {
+    userName: string,
+    Login: string,
+    Password: string,
+    passwordAgain: string,
+    acceptAgreement: string,
+};
+
+export interface ISignInFormData {
+    label?: string
+    register?: UseFormRegister<FormNames>,
+    errors?: FieldErrors
+    name : Path<FormNames>
 
 }
 
-export type Inputs = {
-    label: string
-    newPassword: boolean,
-    confirmPassword: boolean
-
-};
 export type FieldError = {
     type: string;
     ref?: Ref;
@@ -36,6 +44,15 @@ type FieldErrors<
     > = DeepMap<TFieldValues, FieldError>;
 
 type FieldValues = Record<string, any>;
+type RegisterOptions = Partial<{
+    required: Message | ValidationRule<boolean>;
+    min: ValidationRule<number | string>;
+    max: ValidationRule<number | string>;
+    maxLength: ValidationRule<number | string>;
+    minLength: ValidationRule<number | string>;
+    pattern: ValidationRule<RegExp>;
+    // validate: Validate | Record<string, Validate>;
+}>;
 
 
 

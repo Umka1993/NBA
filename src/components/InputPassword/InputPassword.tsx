@@ -1,4 +1,4 @@
-import {useState, useMemo, useCallback} from "react";
+import {useCallback, useMemo, useState} from "react";
 import eyeClose from '../../assets/icon/eyeClose.svg'
 import eyeOpen from '../../assets/icon/eyeOpen.svg'
 import {IInputProps} from "../../../main";
@@ -11,7 +11,6 @@ export const InputPassword = ({
                                   errors,
                                   label,
                                   name,
-                                  message
                               }: IInputProps): JSX.Element => {
 
     const [passwordShown, setPasswordShown] = useState(true)
@@ -38,7 +37,7 @@ export const InputPassword = ({
                    register={register}
                    errors={errors}
                    name={name}
-                   message={message}
+
 
             />
         </>

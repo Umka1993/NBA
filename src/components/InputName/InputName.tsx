@@ -14,7 +14,6 @@ export const InputName = (
         return (
             <>
                 <Input
-
                     label={label}
                     type='text'
                     register={register}
