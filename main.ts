@@ -1,7 +1,7 @@
 import {DeepMap, Message, MultipleFieldErrors, Path, Ref, UseFormRegister, ValidationRule} from "react-hook-form";
 
 
-export interface IInputProps{
+export interface IInputProps<T>{
     disabled?: boolean,
     errors?: FieldErrors
     togglePasswordShown?: () => void
@@ -10,13 +10,13 @@ export interface IInputProps{
     eyeClose?: string
     eyeOpen?: string
     type?: string
-    register: UseFormRegister<FormNames>
+    register?: UseFormRegister<T>
     errorKey?: string
-    name: Path<FormNames>
+    name: Path<T>
     message?: string
     label?: string,
 }
-export type FormNames = {
+export interface FormNames extends SignInInputs {
     userName: string,
     Login: string,
     Password: string,
@@ -24,12 +24,16 @@ export type FormNames = {
     acceptAgreement: string,
 };
 
-export interface ISignInFormData {
-    label?: string
-    register?: UseFormRegister<FormNames>,
-    errors?: FieldErrors
-    name : Path<FormNames>
-
+// export interface ISignInFormData {
+//     label?: string
+//     register?: UseFormRegister<FormNames>,
+//     errors?: FieldErrors
+//     name : Path<FormNames>
+//
+// }
+export interface SignInInputs  {
+    Login: string
+    Password: string
 }
 
 export type FieldError = {

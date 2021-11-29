@@ -1,4 +1,3 @@
-
 .wrap {
   padding-top: 340px;
   padding-bottom: 335px;
@@ -16,6 +15,29 @@
     width: 100%;
     text-align: left;
   }
+
+  .componentWrap {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 24px;
+    span {
+      font-family: 'Avenir', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 150%;
+      color: #FF768E;
+      margin-top: 5px;
+    }
+  }
+
+  .error {
+    display: flex;
+  }
+
+
 
 }
 
@@ -85,7 +107,7 @@
   .colWrap {
     display: none;
   }
-  .error{
+  .error {
     background: #FF5761;
     border-radius: 4px;
     align-items: center;
@@ -100,10 +122,10 @@
 }
 
 
-
 @media (max-width: 375px) {
   .formWrap {
     padding: 0 24px;
+
     .title {
       text-align: center;
     }

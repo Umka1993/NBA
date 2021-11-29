@@ -1,32 +1,24 @@
-import s from './styleInputLogin.module.scss'
+import s from "../styleInput.module.scss";
 import {IInputProps} from "../../../main";
-import {Input_2} from "../Input-2/Input";
-import {Label} from "../Label/Label";
+import React from "react";
 
 
-export const InputLogin  = (
+export const InputLogin  = <T,>(
     {
-        label,
         register,
-        errors,
         name
-    }:IInputProps): JSX.Element => {
+    }:IInputProps<T>): JSX.Element => {
 
 
-
-debugger
         return (
-
             <div className={s.inputBlock}>
-                {label && <Label name={name} label={label}/>}
-
-                <div className={`${errors.login ? s.error : ''} ${s.inputWrap}`}>
-                    <Input_2 register={register} name={name} label={label}/>
+            <label htmlFor={name}>Login</label>
+                <div className={s.inputWrap} >
+                    <input {...register(name, {required: "This is required."},)}
+                           type='text'
+                           id={name}
+                    />
                 </div>
-
-                {errors.login && <span>{errors.login.message}</span>}
-
-
             </div>
         )
     }

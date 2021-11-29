@@ -1,41 +1,37 @@
-import s from '../Input/styleInput.module.scss';
+import s from '../styleInput.module.scss';
 import {IInputProps} from "../../../main";
-import {ErrorMessage} from "@hookform/error-message";
+import {useState} from "react";
 
 
-export const InputAgreement = (
+export const InputAgreement = <T, >(
         {
-            label,
             isDisabled,
-            type,
             register,
-            errors,
             name
-        }: IInputProps): JSX.Element => {
+        }: IInputProps<T>): JSX.Element => {
 
+        const [isChecked, setIsChecked] = useState(false);
 
-        const isErrorKey = Object.keys(errors);
+        const toggleIsChecked = () => {
+            setIsChecked(!isChecked)
+            return isChecked
+        }
+
 
 
         return (
             <div className={s.inputRadioBlock}>
-                <div className={`${Object.keys(errors).length !== 0 && isErrorKey.includes(name)
-                    ? s.error : ''} ${s.inputRadioWrap}`}>
+                <div className={s.inputRadioWrap}>
                     <input {...register(name, {required: "This is required."})}
                            className={`${isDisabled ? s.disabled : ''} `}
-                           type={type}
-                           id={label}
+                           type='radio'
+                           id={name}
                            name={name}
+                           onClick={toggleIsChecked}
+                           checked={isChecked}
                     />
-                    {label && <label htmlFor={label}>{label}</label>}
-
+                    <label htmlFor={name}>I accept the agreement</label>
                 </div>
-                <ErrorMessage
-                    errors={errors}
-                    name={name}
-                    render={({message}) => <span>{message}</span>}
-                />
-
             </div>
         )
     }

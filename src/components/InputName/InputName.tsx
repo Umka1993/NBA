@@ -1,26 +1,27 @@
 import {IInputProps} from "../../../main";
-import {Input} from "../Input/Input";
+import s from "../styleInput.module.scss";
+
+import React from "react";
 
 
-export const InputName = (
+export const InputName = <T,>(
         {
-            label,
             register,
-            errors,
-            name
-        }: IInputProps): JSX.Element => {
-
+            name,
+            isDisabled
+        }: IInputProps<T>): JSX.Element => {
 
         return (
-            <>
-                <Input
-                    label={label}
-                    type='text'
-                    register={register}
-                    errors={errors}
-                    name={name}
-                />
-            </>
+            <div className={s.inputBlock}>
+                <label htmlFor={name}>Name</label>
+                <div className={s.inputWrap} >
+                    <input {...register(name, {required: "This is required."},)}
+                           type='text'
+                           id={name}
+                           className={`${isDisabled ? s.disabled : ''} `}
+                    />
+                </div>
+            </div>
         )
     }
 ;
