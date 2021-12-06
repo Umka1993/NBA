@@ -1,0 +1,47 @@
+@font-face {
+  font-family: AvenirBook;
+  src: local('AvenirBook'), url('../font/Avenir-Book.woff') format('woff');
+}
+
+@font-face {
+  font-family: AvenirMedium;
+  src: local('AvenirMedium'), url('../font/Avenir-Medium.woff') format('woff');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+h2 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1140px;
+  max-width: 90%;
+}
+
+button {
+  &:hover {
+    background: var(--light-red);
+  }
+
+  &:active {
+    background: var(--darkRed);
+  }
+
+  &:disabled {
+    background: var(--lightest-grey);
+  }
+}

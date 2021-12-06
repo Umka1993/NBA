@@ -1,14 +1,17 @@
 import React from 'react';
-import AuthPage from "./pages/authorization/authPage";
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from './pages/AppRouter';
+import '../src/assets/style/variables.scss';
+import './assets/style/main.scss';
 
-const App = () => {
-    return (
-        <div>
-            <AuthPage/>
-        </div>
-    );
+const App = (): JSX.Element => {
+  return (
+    <>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </>
+  );
 };
 
 export default App;
-
-

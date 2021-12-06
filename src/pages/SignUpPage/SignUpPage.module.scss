@@ -1,0 +1,134 @@
+.wrap {
+  display: flex;
+  flex: 1;
+}
+
+.colLeft {
+  display: flex;
+  flex: 3 2;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+    font-size: 36px;
+    font-family: var(--avenir-book);
+    font-weight: normal;
+    color: var(--blue);
+    flex-direction: column;
+    font-style: normal;
+    line-height: 49px;
+  }
+}
+
+.colLeftWrap {
+  display: flex;
+  padding: 0 120px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.colRight {
+  position: relative;
+  flex: 2 1;
+  height: 100vh;
+  background: var(--light-blue);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: auto;
+    background: url('../../assets/icon/authBg.png') no-repeat center;
+    background-size: 80% auto;
+  }
+}
+
+//@media (min-width: 1200px) {}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .colLeft {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .colRight {
+    flex: 1;
+  }
+
+  .colLeftWrap {
+    padding: 0;
+    width: 60%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .colLeft {
+    flex: 2;
+    justify-content: center;
+  }
+
+  .colRight {
+    flex: 1;
+  }
+
+  .colLeftWrap {
+    padding: 0;
+    width: 50%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .wrap {
+    height: 100vh;
+  }
+
+  .colLeft {
+    flex: 1;
+    width: 80%;
+
+    .colLeftWrap {
+      width: 100%;
+    }
+  }
+
+  .colRight {
+    display: none;
+  }
+
+  .colLeftWrap {
+    padding: 0;
+    width: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  .wrap {
+    height: 100vh;
+  }
+
+  .colLeft {
+    flex: 1;
+    width: 80%;
+
+    .colLeftWrap {
+      width: 100%;
+    }
+  }
+
+  .colRight {
+    display: none;
+  }
+
+  .colLeftWrap {
+    padding: 0;
+    width: 50%;
+  }
+}
