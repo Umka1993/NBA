@@ -5,11 +5,11 @@
 
 .formWrap {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 366px;
   margin: 0 auto;
+  max-width: 366px;
+  flex-direction: column;
 
   .title {
     width: 100%;
@@ -18,27 +18,25 @@
 
   .componentWrap {
     display: flex;
-    flex-direction: column;
-    border-radius: 4px;
-    width: 100%;
     margin-bottom: 24px;
+    width: 100%;
+    border-radius: 4px;
+    flex-direction: column;
+
     span {
-      font-family: 'Avenir', sans-serif;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 150%;
-      color: #FF768E;
       margin-top: 5px;
+      font-size: 12px;
+      font-family: 'Avenir', sans-serif;
+      font-weight: 500;
+      color: #ff768e;
+      font-style: normal;
+      line-height: 150%;
     }
   }
 
   .error {
     display: flex;
   }
-
-
-
 }
 
 .formButton {
@@ -47,21 +45,23 @@
   width: 100%;
 
   button {
-    font-family: var(--AvenirMedium);
-    font-style: normal;
-    font-weight: 500;
+    margin-bottom: 26px;
+    padding: 8px 0;
+    width: 100%;
     font-size: 14px;
-    line-height: 24px;
+    font-family: var(--avenir-medium);
+    font-weight: 500;
+    color: var(--white);
     background: var(--red);
     border: none;
     border-radius: 4px;
-    padding: 8px 0;
-    color: var(--white);
-    margin-bottom: 26px;
-    width: 100%;
+    font-style: normal;
+    line-height: 24px;
 
+    &:disabled {
+      background: var(--lightest-grey);
+    }
   }
-
 }
 
 .signUpRow {
@@ -69,20 +69,18 @@
   justify-content: center;
 
   p {
-    font-family: var(--AvenirMedium);
-    font-style: normal;
-    font-weight: 500;
     font-size: 14px;
-    line-height: 24px;
+    font-family: var(--avenir-medium);
+    font-weight: 500;
     color: var(--grey);
+    font-style: normal;
+    line-height: 24px;
 
     a {
       color: var(--red);
-
     }
   }
 }
-
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .formButton {
@@ -103,24 +101,22 @@
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-
   .colWrap {
     display: none;
   }
+
   .error {
-    background: #FF5761;
-    border-radius: 4px;
     align-items: center;
+    background: #ff5761;
+    border-radius: 4px;
   }
 }
-
 
 @media (max-width: 575px) {
   .formWrap {
     padding: 0 24px;
   }
 }
-
 
 @media (max-width: 375px) {
   .formWrap {
@@ -131,7 +127,3 @@
     }
   }
 }
-
-
-
-

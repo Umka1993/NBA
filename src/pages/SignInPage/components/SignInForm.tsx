@@ -1,66 +1,67 @@
 import React from 'react';
-import s from "./SignInForm.module.scss";
-import {InputPassword} from "../../../components/InputPassword/InputPassword";
-import {useForm} from "react-hook-form";
-import {SignInInputs} from "../../../../main";
-import {Link} from "react-router-dom";
-import {InputLogin} from "../../../components/InputLogin/InputLogin";
-import {UnpackNestedValue} from "react-hook-form/dist/types/form";
-
+import s from './SignInForm.module.scss';
+import { InputPassword } from 'ui/InputPassword/InputPassword';
+import { useForm } from 'react-hook-form';
+import { LabelNames, SignInInputs } from 'types';
+import { Link, useNavigate } from 'react-router-dom';
+import { Input } from 'ui/Input/Input';
+import SignBtn from 'ui/SignBtn/SignBtn';
+import { useAppDispatch } from '../../../core/redux/hooks/redux';
+import { loginData } from '../../../modules/authorization/loginThunk';
 
 export const SignInForm = (): JSX.Element => {
-    const {register, handleSubmit, formState: {errors}} = useForm<SignInInputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid, isDirty },
+  } = useForm<SignInInputs>({ mode: 'onChange' });
+  // const { login } = useAppSelector((state) => state.setAuthDataReducer);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
+  const onSubmit = async (data: SignInInputs) => {
+    const { meta } = await dispatch(loginData(data));
+    if (meta.requestStatus === 'fulfilled') {
+      navigate('/mainPage');
+    }
+  };
 
-    const onSubmit = (data: UnpackNestedValue<SignInInputs>) => console.log(data);
+  return (
+    <div className={s.form}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={s.formWrap}>
+          <div className={s.title}>
+            <h2>Sign In</h2>
+          </div>
+          <div className={`${errors.Login ? s.error : ''} ${s.componentWrap}`}>
+            <Input<SignInInputs, LabelNames>
+              register={register}
+              name={'Login'}
+              label={'Login'}
+              // value={login}
+            />
+            {errors.Login && <span>{errors.Login.message}</span>}
+          </div>
 
-    return (
-        <div className={s.form} onSubmit={handleSubmit(onSubmit)}>
-            <form action="#">
-                <div className={s.formWrap}>
-                    <div className={s.title}>
-                        <h2>Sign In</h2>
-                    </div>
-                    <div className={`${errors.Login ? s.error : ''} ${s.componentWrap}`} >
-                        <InputLogin<SignInInputs>
-                            disabled={false}
-                            label='Login'
-                            register={register}
-                            name={"Login"}
-                            isDisabled={false}
-                        />
-                        {errors.Login && (<span>{errors.Password.message}</span>)}
-                    </div>
+          <div className={`${errors.Login ? s.error : ''} ${s.componentWrap}`}>
+            <InputPassword<SignInInputs, LabelNames>
+              register={register}
+              name={'Password'}
+              label={'Password'}
+            />
+            {errors.Password && <span>{errors.Password.message}</span>}
+          </div>
 
+          <SignBtn isDirty={isDirty} isValid={isValid} text="Sign In" />
 
-                    <div className={`${errors.Login ? s.error : ''} ${s.componentWrap}`}>
-                        <InputPassword<SignInInputs>
-                            disabled={false}
-                            label='Password'
-                            register={register}
-                            name={"Password"}
-                            isDisabled={false}
-                        />
-                        {errors.Password && (<span>{errors.Password.message}</span>)}
-                    </div>
-
-                    <div className={s.formButton}>
-                        <button type="submit">Sign In</button>
-                    </div>
-
-                    <div className={s.signUpRow}>
-                        <p>Not a member yet?
-                            <Link to='/signUpPage'> Sign up</Link>
-                        </p>
-                    </div>
-
-                </div>
-            </form>
+          <div className={s.signUpRow}>
+            <p>
+              Not a member yet?
+              <Link to="/signUpPage"> Sign up</Link>
+            </p>
+          </div>
         </div>
-
-    )
+      </form>
+    </div>
+  );
 };
-
-
-
-

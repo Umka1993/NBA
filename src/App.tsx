@@ -1,30 +1,17 @@
-import React, {useEffect} from 'react';
-import './assets/style/main.module.scss'
-import '../src/assets/style/variables.scss'
-import {BrowserRouter, Navigate, useNavigate} from "react-router-dom";
-import {useAppSelector} from "./core/redux/hooks/redux";
-import {AppRouter} from "./components/AppRouter";
-import {SIGNINPAGE_ROUTE} from "./pages/utils/constans";
-
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { AppRouter } from './pages/AppRouter';
+import '../src/assets/style/variables.scss';
+import './assets/style/main.scss';
 
 const App = (): JSX.Element => {
-
-
-
-
-    return (
-        <>
-            <BrowserRouter>
-
-                <AppRouter/>
-            </BrowserRouter>
-
-        </>
-
-
-    );
+  return (
+    <>
+      <BrowserRouter>
+        <AppRouter />
+      </BrowserRouter>
+    </>
+  );
 };
 
 export default App;
-
-
