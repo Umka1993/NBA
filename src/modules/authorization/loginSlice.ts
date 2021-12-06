@@ -30,6 +30,7 @@ const loginSlice = createSlice({
     });
     builder.addCase(loginData.rejected, (state: IState, action: AnyAction) => {
       state.isLoading = false;
+      debugger;
       errorProcess(state, action);
     });
   },

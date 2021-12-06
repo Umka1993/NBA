@@ -14,4 +14,5 @@ export enum ResultCodesEnum {
   Success = 200,
   ServerError = 400,
   DuplicateData = 409,
+  Unauthorized = 401,
 }
