@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './SignInPage.module.scss';
-import { SignInForm } from './components/SignInForm';
+import { SignInForm } from './components/SignInForm/SignInForm';
 import { useAppSelector } from '../../core/redux/hooks/redux';
 
 export const SignInPage = (): JSX.Element => {
   const { error, isLoading, message } = useAppSelector((state) => state.loginSliceReducer);
-  debugger;
+
   return (
     <>
       {isLoading && (

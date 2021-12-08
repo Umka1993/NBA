@@ -1,10 +1,11 @@
 import { IState } from '../../types';
-import { AnyAction } from '@reduxjs/toolkit';
 import { ResultCodesEnum } from '../../api/dto/IAutorization';
 
-export const errorProcess = (state: IState, action: AnyAction): void => {
-  const status = action.payload.status;
-  debugger;
+export const errorProcess = (
+  state: IState,
+  action: { payload: { response?: { status: number } } }
+): void => {
+  const status = action.payload.response.status;
   if (status === ResultCodesEnum.DuplicateData) {
     state.error = true;
     state.message = 'A user with such data already exists.';

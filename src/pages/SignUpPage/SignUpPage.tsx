@@ -1,6 +1,6 @@
 import React from 'react';
 import s from '../SignInPage/SignInPage.module.scss';
-import { SignUpForm } from './components/SignUpForm';
+import { SignUpForm } from './components/SignUpForm/SignUpForm';
 import { useAppSelector } from '../../core/redux/hooks/redux';
 
 export const SignUpPage = (): JSX.Element => {
@@ -8,13 +8,11 @@ export const SignUpPage = (): JSX.Element => {
 
   return (
     <>
-      {isLoading && (
+      {isLoading ? (
         <div className={s.loading}>
           <h2>Loading... </h2>
         </div>
-      )}
-
-      {!isLoading && (
+      ) : (
         <div className={s.wrap}>
           {error && (
             <div className={s.error}>

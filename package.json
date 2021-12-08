@@ -37,7 +37,8 @@
     "build": "react-scripts build",
     "lint": "eslint --ext .ts,.tsx src --fix",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "stylelint": "stylelint \"**/*.scss\" --syntax scss --fix"
   },
   "prettier": {
     "singleQuote": true,
@@ -62,10 +63,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.16.3",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
+    "babel-eslint": "^10.1.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-absolute-import": "^1.4.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",

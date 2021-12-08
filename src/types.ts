@@ -9,23 +9,19 @@ export interface IInputProps<T, L = void> {
 
 export interface FormNames extends SignInInputs {
   userName: string;
-  Login: string;
-  Password: string;
   passwordAgain: string;
   acceptAgreement: string;
+}
+
+export interface LabelNames extends SignInInputs {
+  Name: string;
+  'Enter your password again': string;
+  'I accept the agreement': string;
 }
 
 export interface SignInInputs {
   Login: string;
   Password: string;
-}
-
-export interface LabelNames {
-  Name: string;
-  Login: string;
-  Password: string;
-  'Enter your password again': string;
-  'I accept the agreement': string;
 }
 
 export type FieldError = {
@@ -34,31 +30,6 @@ export type FieldError = {
   types?: MultipleFieldErrors;
   message?: Message;
 };
-
-export interface SerializedError {
-  name?: string;
-  message?: string;
-  stack?: string;
-  code?: string;
-}
-
-export interface RejectedAction<T> {
-  type: string;
-  payload: undefined;
-  error: SerializedError | any;
-  meta: {
-    requestId: string;
-    arg: T;
-    aborted: boolean;
-    condition: boolean;
-  };
-}
-
-export interface IButtonProps {
-  text: string;
-  isValid: boolean;
-  isDirty: boolean;
-}
 
 export interface IState {
   isLogin: boolean;

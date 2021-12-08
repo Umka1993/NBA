@@ -1,0 +1,401 @@
+.content {
+  display: flex;
+  justify-content: center;
+  flex: 90%;
+  background-color: var(--lightest-grey);
+
+  .contentWrap {
+    padding: 32px 80px;
+    max-width: 1440px;
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+
+      .navInput {
+        display: flex;
+        align-items: center;
+        padding: 6px 12px;
+        width: 100%;
+        max-width: 364px;
+        background-color: var(--white);
+        border: 0.5px solid #d1d1d1;
+        border-radius: 4px;
+
+        input {
+          font-size: 14px;
+          font-family: var(--avenir-medium);
+          font-weight: 500;
+          border: none;
+          outline: none;
+          font-style: normal;
+          line-height: 24px;
+          flex: 9;
+        }
+
+        .inputImg {
+          flex: 1;
+        }
+      }
+
+      button {
+        padding: 8px 24px;
+        font-size: 15px;
+        font-family: var(--avenir-medium);
+        font-weight: 500;
+        color: var(--white);
+        background: var(--red);
+        border: none;
+        border-radius: 4px;
+        font-style: normal;
+        line-height: 24px;
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding-top: 32px;
+
+      .teamCard {
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;
+        width: 30%;
+        max-width: 365px;
+        background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
+        border-radius: 4px 4px 4px 4px;
+        flex-direction: column;
+
+        .mainCard {
+          position: relative;
+          padding-top: 65px;
+          padding-bottom: 65px;
+        }
+
+        .teamInfo {
+          padding: 24px 10px;
+          width: 100%;
+          max-width: 365px;
+          text-align: center;
+          background-color: var(--dark-grey);
+          border-radius: 0 0 4px 4px;
+
+          .teamName {
+            font-size: 18px;
+            font-family: var(--avenir-medium);
+            font-style: normal;
+            font-weight: 500;
+            line-height: 25px;
+            color: var(--white);
+          }
+
+          .teamBirthday {
+            font-size: 13px;
+            font-family: var(--avenir-medium);
+            font-weight: 500;
+            color: var(--light-grey);
+            line-height: 18px;
+          }
+        }
+      }
+    }
+
+    .navFooter {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .pagination {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin: 0 33px;
+        }
+
+        ul {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          li {
+            margin-right: 48px;
+            font-size: 14px;
+            font-family: var(--avenir-medium);
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            color: var(--grey);
+
+            &.active {
+              padding: 10px 16px;
+              color: var(--white);
+              background: var(--red);
+              border-radius: 4px;
+            }
+          }
+        }
+
+        .arrowRight {
+          transform: rotate(180deg);
+        }
+      }
+
+      .numberTeams {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px 12px 24px;
+        background-color: var(--white);
+        border: 0.5px solid var(--lightest1-grey);
+        border-radius: 4px;
+
+        .number {
+          padding-right: 35px;
+          font-size: 14px;
+          font-family: var(--avenir-medium);
+          font-weight: 500;
+          font-style: normal;
+          line-height: 24px;
+          color: var(--dark-grey);
+        }
+
+        .button {
+          position: relative;
+
+          &:before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            width: 1px;
+            height: 24px;
+            background-color: var(--light-grey);
+          }
+
+          img {
+            transform: rotate(270deg);
+          }
+        }
+      }
+
+      .teamNumberWindow {
+        position: absolute;
+        bottom: 52px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--white);
+        border: 0.5px solid var(--lightest1-grey);
+        border-radius: 4px;
+
+        span {
+          padding: 8px 54px 8px 20px;
+          color: var(--light-grey);
+
+          &:nth-child(2) {
+            border-top: 0.5px solid var(--lightest1-grey);
+            border-bottom: 0.5px solid var(--lightest1-grey);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .content {
+    img {
+      max-width: 100px;
+    }
+
+    .contentWrap {
+      padding: 16px 25px;
+
+      .wrapper {
+        .teamCard {
+          .teamInfo {
+            padding: 24px 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .content {
+    img {
+      max-width: 100px;
+    }
+
+    .contentWrap {
+      padding: 16px 40px;
+
+      .wrapper {
+        .teamCard {
+          width: 49%;
+
+          .teamInfo {
+            padding: 22px 11px;
+          }
+        }
+      }
+
+      .navFooter {
+        .pagination {
+          span {
+            margin: 0 19px;
+          }
+
+          ul {
+            li {
+              margin-right: 17px;
+
+              &.active {
+                padding: 7px 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .content {
+    img {
+      max-width: 50px;
+    }
+
+    .contentWrap {
+      padding: 16px 12px;
+
+      .wrapper {
+        .teamCard {
+          width: 49%;
+
+          .teamInfo {
+            padding: 22px 11px;
+          }
+        }
+      }
+
+      .navFooter {
+        .pagination {
+          span {
+            margin: 0 19px;
+          }
+
+          ul {
+            li {
+              margin-right: 17px;
+
+              &.active {
+                padding: 7px 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .content {
+    .contentWrap {
+      padding: 16px 12px;
+
+      .nav {
+        flex-direction: column;
+
+        .navInput {
+          margin-bottom: 16px;
+          max-width: 100%;
+
+          input {
+            flex: 95%;
+          }
+        }
+      }
+
+      .wrapper {
+        .teamCard {
+          width: 49%;
+
+          .mainCard {
+            padding-top: 35px;
+            padding-bottom: 25px;
+
+            .teamImg {
+              img {
+                max-width: 50px;
+              }
+            }
+          }
+
+          .teamInfo {
+            padding: 22px 11px;
+
+            .teamName {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      .navFooter {
+        .teamNumberWindow {
+          right: 3px;
+
+          span {
+            padding: 6px 32px 6px 16px;
+          }
+        }
+
+        .numberTeams {
+          padding: 6px 4px 4px 12px;
+
+          .number {
+            margin-right: 35px;
+            padding: 0;
+          }
+
+          .button {
+            margin-right: 4px;
+
+            &:before {
+              top: -7px;
+              left: -17px;
+            }
+
+            img {
+              display: flex;
+              justify-content: center;
+            }
+          }
+        }
+
+        .pagination {
+          span {
+            margin: 0 19px;
+          }
+
+          ul {
+            li {
+              margin-right: 17px;
+
+              &.active {
+                padding: 7px 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
