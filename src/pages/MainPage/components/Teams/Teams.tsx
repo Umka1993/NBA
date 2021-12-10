@@ -3,6 +3,7 @@ import s from './teams.module.scss';
 import search from 'assets/icon/search.png';
 import teamImg from 'assets/icon/POR 1.png';
 import arrow from 'assets/icon/chevron_right_24px.png';
+import { ItemsPerPage } from './ItemsPerPage/ItemsPerPage';
 
 export const Teams = (): JSX.Element => {
   return (
@@ -115,17 +116,8 @@ export const Teams = (): JSX.Element => {
               <img src={arrow} alt="arrow" />
             </span>
           </div>
-          <div className={s.numberTeams}>
-            <span className={s.number}>6</span>
-            <span className={s.button}>
-              <img src={arrow} alt="arrow" />
-            </span>
-          </div>
-          <div className={s.teamNumberWindow}>
-            <span>6</span>
-            <span>12</span>
-            <span>24</span>
-          </div>
+
+          <ItemsPerPage />
         </div>
       </div>
     </div>

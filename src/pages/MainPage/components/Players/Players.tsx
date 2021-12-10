@@ -4,6 +4,7 @@ import search from 'assets/icon/search.png';
 import arrow from 'assets/icon/chevron_right_24px.png';
 import player from 'assets/icon/player.png';
 import { FilterTeams } from '../FilterTeams/FilterTeams';
+import { ItemsPerPage } from '../Teams/ItemsPerPage/ItemsPerPage';
 
 export const Players = (): JSX.Element => {
   return (
@@ -130,17 +131,7 @@ export const Players = (): JSX.Element => {
               <img src={arrow} alt="arrow" />
             </span>
           </div>
-          <div className={s.numbersPlayers}>
-            <span className={s.number}>6</span>
-            <span className={s.button}>
-              <img src={arrow} alt="arrow" />
-            </span>
-          </div>
-          <div className={s.playersNumberWindow}>
-            <span>6</span>
-            <span>12</span>
-            <span>24</span>
-          </div>
+          <ItemsPerPage />
         </div>
       </div>
     </div>
