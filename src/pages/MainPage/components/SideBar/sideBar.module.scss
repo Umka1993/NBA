@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 37px 15px;
+  padding: 0 15px;
   flex: 10%;
   background-color: var(--white);
 
@@ -15,6 +15,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+      margin-top: 37px;
 
       p {
         font-size: 12px;

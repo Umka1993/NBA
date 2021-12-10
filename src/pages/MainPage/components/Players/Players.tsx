@@ -1,10 +1,11 @@
 import React from 'react';
-import s from './conten.module.scss';
+import s from './players.module.scss';
 import search from 'assets/icon/search.png';
-import teamImg from 'assets/icon/POR 1.png';
 import arrow from 'assets/icon/chevron_right_24px.png';
+import player from 'assets/icon/player.png';
+import { FilterTeams } from '../FilterTeams/FilterTeams';
 
-export const Content = (): JSX.Element => {
+export const Players = (): JSX.Element => {
   return (
     <div className={s.content}>
       <div className={s.contentWrap}>
@@ -16,84 +17,98 @@ export const Content = (): JSX.Element => {
             </div>
           </div>
 
-          <button>Add +</button>
+          <FilterTeams />
+
+          <button> Add +</button>
         </div>
         <div className={s.wrapper}>
-          <div className={s.teamCard}>
+          <div className={s.playersCard}>
             <div className={s.mainCard}>
-              <div className={s.teamImg}>
-                <img src={teamImg} alt="teamImg" />
+              <div className={s.playersImg}>
+                <img src={player} alt="playersImg" />
               </div>
             </div>
-            <div className={s.teamInfo}>
-              <div className={s.teamWrap}>
+            <div className={s.playersInfo}>
+              <div className={s.playersWrap}>
+                <p className={s.playersName}>
+                  Jaylen Adams <span className={s.numberPlayer}>#10</span>
+                </p>
                 <p className={s.teamName}>Portland trail blazers</p>
-                <p className={s.teamBirthday}>Year of foundation: 1970</p>
               </div>
             </div>
           </div>
-          <div className={s.teamCard}>
+          <div className={s.playersCard}>
             <div className={s.mainCard}>
-              <div className={s.teamImg}>
-                <img src={teamImg} alt="teamImg" />
+              <div className={s.playersImg}>
+                <img src={player} alt="playersImg" />
               </div>
             </div>
-            <div className={s.teamInfo}>
-              <div className={s.teamWrap}>
+            <div className={s.playersInfo}>
+              <div className={s.playersWrap}>
+                <p className={s.playersName}>
+                  Jaylen Adams <span className={s.numberPlayer}>#10</span>
+                </p>
                 <p className={s.teamName}>Portland trail blazers</p>
-                <p className={s.teamBirthday}>Year of foundation: 1970</p>
               </div>
             </div>
           </div>
-          <div className={s.teamCard}>
+          <div className={s.playersCard}>
             <div className={s.mainCard}>
-              <div className={s.teamImg}>
-                <img src={teamImg} alt="teamImg" />
+              <div className={s.playersImg}>
+                <img src={player} alt="playersImg" />
               </div>
             </div>
-            <div className={s.teamInfo}>
-              <div className={s.teamWrap}>
+            <div className={s.playersInfo}>
+              <div className={s.playersWrap}>
+                <p className={s.playersName}>
+                  Jaylen Adams <span className={s.numberPlayer}>#10</span>
+                </p>
                 <p className={s.teamName}>Portland trail blazers</p>
-                <p className={s.teamBirthday}>Year of foundation: 1970</p>
               </div>
             </div>
           </div>
-          <div className={s.teamCard}>
+          <div className={s.playersCard}>
             <div className={s.mainCard}>
-              <div className={s.teamImg}>
-                <img src={teamImg} alt="teamImg" />
+              <div className={s.playersImg}>
+                <img src={player} alt="playersImg" />
               </div>
             </div>
-            <div className={s.teamInfo}>
-              <div className={s.teamWrap}>
+            <div className={s.playersInfo}>
+              <div className={s.playersWrap}>
+                <p className={s.playersName}>
+                  Jaylen Adams <span className={s.numberPlayer}>#10</span>
+                </p>
                 <p className={s.teamName}>Portland trail blazers</p>
-                <p className={s.teamBirthday}>Year of foundation: 1970</p>
               </div>
             </div>
           </div>
-          <div className={s.teamCard}>
+          <div className={s.playersCard}>
             <div className={s.mainCard}>
-              <div className={s.teamImg}>
-                <img src={teamImg} alt="teamImg" />
+              <div className={s.playersImg}>
+                <img src={player} alt="playersImg" />
               </div>
             </div>
-            <div className={s.teamInfo}>
-              <div className={s.teamWrap}>
+            <div className={s.playersInfo}>
+              <div className={s.playersWrap}>
+                <p className={s.playersName}>
+                  Jaylen Adams <span className={s.numberPlayer}>#10</span>
+                </p>
                 <p className={s.teamName}>Portland trail blazers</p>
-                <p className={s.teamBirthday}>Year of foundation: 1970</p>
               </div>
             </div>
           </div>
-          <div className={s.teamCard}>
+          <div className={s.playersCard}>
             <div className={s.mainCard}>
-              <div className={s.teamImg}>
-                <img src={teamImg} alt="teamImg" />
+              <div className={s.playersImg}>
+                <img src={player} alt="playersImg" />
               </div>
             </div>
-            <div className={s.teamInfo}>
-              <div className={s.teamWrap}>
+            <div className={s.playersInfo}>
+              <div className={s.playersWrap}>
+                <p className={s.playersName}>
+                  Jaylen Adams <span className={s.numberPlayer}>#10</span>
+                </p>
                 <p className={s.teamName}>Portland trail blazers</p>
-                <p className={s.teamBirthday}>Year of foundation: 1970</p>
               </div>
             </div>
           </div>
@@ -115,13 +130,13 @@ export const Content = (): JSX.Element => {
               <img src={arrow} alt="arrow" />
             </span>
           </div>
-          <div className={s.numberTeams}>
+          <div className={s.numbersPlayers}>
             <span className={s.number}>6</span>
             <span className={s.button}>
               <img src={arrow} alt="arrow" />
             </span>
           </div>
-          <div className={s.teamNumberWindow}>
+          <div className={s.playersNumberWindow}>
             <span>6</span>
             <span>12</span>
             <span>24</span>

@@ -5,7 +5,7 @@
   background-color: var(--lightest-grey);
 
   .contentWrap {
-    padding: 32px 80px;
+    padding: 32px 15px;
     max-width: 1440px;
 
     .nav {
@@ -17,8 +17,8 @@
         display: flex;
         align-items: center;
         padding: 6px 12px;
-        width: 100%;
-        max-width: 364px;
+        width: 45%;
+        max-width: 40%;
         background-color: var(--white);
         border: 0.5px solid #d1d1d1;
         border-radius: 4px;
@@ -31,11 +31,58 @@
           outline: none;
           font-style: normal;
           line-height: 24px;
-          flex: 9;
+          flex: 20;
         }
 
         .inputImg {
+          display: flex;
+          justify-content: center;
           flex: 1;
+        }
+      }
+
+      .teamFilter {
+        box-shadow: none;
+
+        .filteredTeams {
+          flex: 20;
+
+          .filteredTeamName {
+            margin-right: 4px;
+            padding: 3px 8px 3px 4px;
+            font-size: 14px;
+            font-family: var(--avenir-book);
+            font-weight: normal;
+            color: var(--white);
+            background: var(--red);
+            border-radius: 4px;
+            font-style: normal;
+            line-height: 19px;
+
+            .deleteFeltered {
+              margin-left: 4px;
+            }
+          }
+
+          .orderTeams {
+            padding: 3px 4px;
+            font-size: 14px;
+            font-family: var(--avenir-book);
+            font-weight: normal;
+            color: var(--white);
+            background: var(--red);
+            border-radius: 4px;
+            font-style: normal;
+            line-height: 19px;
+          }
+        }
+
+        .filterImg {
+          flex: 1;
+          padding-bottom: 2px;
+          padding-left: 12px;
+          text-align: center;
+          border-left: 1px solid var(--lightest1-grey);
         }
       }
 
@@ -59,7 +106,7 @@
       flex-wrap: wrap;
       padding-top: 32px;
 
-      .teamCard {
+      .playersCard {
         display: flex;
         align-items: center;
         margin-bottom: 24px;
@@ -71,11 +118,17 @@
 
         .mainCard {
           position: relative;
-          padding-top: 65px;
-          padding-bottom: 65px;
+          padding-top: 73px;
+
+          .playersImg {
+            img {
+              margin-bottom: -5px;
+              width: 100%;
+            }
+          }
         }
 
-        .teamInfo {
+        .playersInfo {
           padding: 24px 10px;
           width: 100%;
           max-width: 365px;
@@ -83,16 +136,21 @@
           background-color: var(--dark-grey);
           border-radius: 0 0 4px 4px;
 
-          .teamName {
+          .playersName {
             font-size: 18px;
             font-family: var(--avenir-medium);
             font-style: normal;
             font-weight: 500;
             line-height: 25px;
             color: var(--white);
+
+            .numberPlayer {
+              color: var(--light-red);
+            }
           }
 
-          .teamBirthday {
+          .teamName {
+            margin-top: 12px;
             font-size: 13px;
             font-family: var(--avenir-medium);
             font-weight: 500;
@@ -145,7 +203,7 @@
         }
       }
 
-      .numberTeams {
+      .numbersPlayers {
         display: flex;
         align-items: center;
         padding: 12px 16px 12px 24px;
@@ -181,7 +239,7 @@
         }
       }
 
-      .teamNumberWindow {
+      .playersNumberWindow {
         position: absolute;
         bottom: 52px;
         right: 0;
@@ -208,15 +266,15 @@
 @media (min-width: 992px) and (max-width: 1199px) {
   .content {
     img {
-      max-width: 100px;
+      //max-width: 100px;
     }
 
     .contentWrap {
-      padding: 16px 25px;
+      padding: 16px 15px;
 
       .wrapper {
-        .teamCard {
-          .teamInfo {
+        .playersCard {
+          .playersInfo {
             padding: 24px 10px;
           }
         }
@@ -228,17 +286,17 @@
 @media (min-width: 768px) and (max-width: 991px) {
   .content {
     img {
-      max-width: 100px;
+      //max-width: 100px;
     }
 
     .contentWrap {
-      padding: 16px 40px;
+      padding: 16px 15px;
 
       .wrapper {
-        .teamCard {
+        .playersCard {
           width: 49%;
 
-          .teamInfo {
+          .playersInfo {
             padding: 22px 11px;
           }
         }
@@ -268,17 +326,33 @@
 @media (min-width: 576px) and (max-width: 767px) {
   .content {
     img {
-      max-width: 50px;
+      //max-width: 50px;
     }
 
     .contentWrap {
       padding: 16px 12px;
 
+      .nav {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .navInput {
+          margin-bottom: 16px;
+          width: 300px;
+          max-width: 100%;
+        }
+        button {
+          margin-top: 16px;
+          width: 300px;
+          max-width: 100%;
+        }
+      }
+
       .wrapper {
-        .teamCard {
+        .playersCard {
           width: 49%;
 
-          .teamInfo {
+          .playersInfo {
             padding: 22px 11px;
           }
         }
@@ -311,37 +385,49 @@
       padding: 16px 12px;
 
       .nav {
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
 
         .navInput {
           margin-bottom: 16px;
+          width: 300px;
           max-width: 100%;
 
           input {
             flex: 95%;
           }
         }
+
+        .teamsFilterSelect {
+          width: 100%;
+        }
+
+        button {
+          margin-top: 16px;
+          width: 300px;
+        }
       }
 
       .wrapper {
-        .teamCard {
+        .playersCard {
           width: 49%;
 
           .mainCard {
             padding-top: 35px;
             padding-bottom: 25px;
 
-            .teamImg {
+            .playersImg {
               img {
-                max-width: 50px;
+                margin-bottom: -30px;
               }
             }
           }
 
-          .teamInfo {
+          .playersInfo {
             padding: 22px 11px;
 
-            .teamName {
+            .playersName {
               font-size: 15px;
             }
           }
@@ -349,7 +435,7 @@
       }
 
       .navFooter {
-        .teamNumberWindow {
+        .playersNumberWindow {
           right: 3px;
 
           span {
@@ -357,7 +443,7 @@
           }
         }
 
-        .numberTeams {
+        .numbersPlayers {
           padding: 6px 4px 4px 12px;
 
           .number {
