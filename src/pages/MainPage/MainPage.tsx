@@ -1,12 +1,19 @@
 import React from 'react';
 import { Header } from './components/Header/Header';
-import { Main } from './components/Main/Main';
+import { SideBar } from './components/SideBar/SideBar';
+import s from './mainPage.module.scss';
+import { Outlet } from 'react-router-dom';
 
-export const MainPage = (): JSX.Element => {
+export const MainPage = ({}): JSX.Element => {
   return (
     <>
       <Header />
-      <Main />
+      <div className={s.main}>
+        <div className={s.wrapMain}>
+          <SideBar />
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };

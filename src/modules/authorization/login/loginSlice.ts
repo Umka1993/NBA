@@ -8,7 +8,7 @@ type RejectedAction = ReturnType<GenericAsyncThunk['rejected']>;
 const loginSlice = createSlice({
   name: 'auth',
   initialState: {
-    isLogin: true,
+    isLogin: false,
     isRegistration: false,
     login: '',
     isLoading: false,
