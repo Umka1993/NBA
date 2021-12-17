@@ -4,10 +4,18 @@ export interface IData {
   userName: string;
 }
 
-export interface ISignUpResponse {
+export interface ISignUpResponse extends MetaData {
   avatarUrl: string | null;
   name: string;
   token: string;
+}
+
+export interface MetaData {
+  meta: {
+    arg: {
+      Login: '888';
+    };
+  };
 }
 
 export enum ResultCodesEnum {
@@ -15,4 +23,13 @@ export enum ResultCodesEnum {
   ServerError = 400,
   DuplicateData = 409,
   Unauthorized = 401,
+}
+
+export interface Error {
+  response: {
+    status: number;
+    title: string;
+    traceId: string;
+    type: string;
+  };
 }

@@ -1,0 +1,86 @@
+.wrap {
+  padding-top: 340px;
+  padding-bottom: 335px;
+}
+
+.formWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 366px;
+  flex-direction: column;
+
+  .title {
+    width: 100%;
+    text-align: left;
+  }
+
+  .componentWrap {
+    display: flex;
+    margin-bottom: 24px;
+    width: 100%;
+    border-radius: 4px;
+    flex-direction: column;
+
+    span {
+      margin-top: 5px;
+      font-size: 12px;
+      font-family: 'Avenir', sans-serif;
+      font-weight: 500;
+      color: var(--lightest-red);
+      font-style: normal;
+      line-height: 150%;
+    }
+  }
+
+  .error {
+    display: flex;
+  }
+}
+
+.signUpRow {
+  display: flex;
+  justify-content: center;
+
+  p {
+    font-size: 14px;
+    font-family: var(--avenir-medium);
+    font-weight: 500;
+    color: var(--grey);
+    font-style: normal;
+    line-height: 24px;
+
+    a {
+      color: var(--red);
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .colWrap {
+    display: none;
+  }
+
+  .error {
+    align-items: center;
+    background: #ff5761;
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 575px) {
+  .formWrap {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 375px) {
+  .formWrap {
+    padding: 0 24px;
+
+    .title {
+      text-align: center;
+    }
+  }
+}

@@ -3,16 +3,20 @@ import { Message, MultipleFieldErrors, Path, Ref, UseFormRegister } from 'react-
 export interface IInputProps<T, L = void> {
   register: UseFormRegister<T>;
   name: Path<T>;
-  label: Path<L>;
+  label?: Path<L>;
   value?: string;
 }
 
 export interface FormNames extends SignInInputs {
   userName: string;
-  Login: string;
-  Password: string;
   passwordAgain: string;
   acceptAgreement: string;
+}
+
+export interface LabelNames extends SignInInputs {
+  Name: string;
+  'Enter your password again': string;
+  'I accept the agreement': string;
 }
 
 export interface SignInInputs {
@@ -20,12 +24,17 @@ export interface SignInInputs {
   Password: string;
 }
 
-export interface LabelNames {
+export interface ITeamFormNames {
+  teamName: string;
+  Division: string;
+  Conference: string;
+  yearFoundation: string;
+  photoInput: string;
+}
+
+export interface ITeamFormLabels extends ITeamFormNames {
+  'Year of foundation': string;
   Name: string;
-  Login: string;
-  Password: string;
-  'Enter your password again': string;
-  'I accept the agreement': string;
 }
 
 export type FieldError = {
@@ -35,35 +44,10 @@ export type FieldError = {
   message?: Message;
 };
 
-export interface SerializedError {
-  name?: string;
-  message?: string;
-  stack?: string;
-  code?: string;
-}
-
-export interface RejectedAction<T> {
-  type: string;
-  payload: undefined;
-  error: SerializedError | any;
-  meta: {
-    requestId: string;
-    arg: T;
-    aborted: boolean;
-    condition: boolean;
-  };
-}
-
-export interface IButtonProps {
-  text: string;
-  isValid: boolean;
-  isDirty: boolean;
-}
-
 export interface IState {
   isLogin: boolean;
   isRegistration: boolean;
-  login: string;
+  userName: string;
   isLoading: boolean;
   error: boolean;
   message: string;

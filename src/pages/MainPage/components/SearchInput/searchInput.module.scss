@@ -1,0 +1,53 @@
+.navInput {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  width: 45%;
+  max-width: 364px;
+  background-color: var(--white);
+  border: 0.5px solid #d1d1d1;
+  border-radius: 4px;
+
+  input {
+    font-size: 14px;
+    font-family: var(--avenir-medium);
+    font-weight: 500;
+    border: none;
+    outline: none;
+    font-style: normal;
+    line-height: 24px;
+    flex: 20;
+  }
+
+  .inputImg {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .navInput {
+    width: 37%;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .navInput {
+    margin-bottom: 16px;
+    width: 300px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .navInput {
+    margin-bottom: 16px;
+    width: 300px;
+    max-width: 100%;
+
+    input {
+      flex: 95%;
+    }
+  }
+}

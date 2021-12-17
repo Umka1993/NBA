@@ -1,0 +1,48 @@
+.wrap {
+  display: block;
+  width: 100%;
+
+  .nav {
+    //width: 22%;
+    .crumbs {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+
+      .crumbItem {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .disabled {
+          color: var(--light-grey);
+        }
+
+        &:nth-child(1n + 2):before {
+          content: '/';
+          position: absolute;
+          top: 2px;
+          left: 0;
+          width: 3px;
+          height: 3px;
+          color: var(--light-grey);
+        }
+
+        .crumbButton {
+          font-size: 14px;
+          font-family: var(--avenir-medium);
+          font-weight: 500;
+          color: var(--red);
+          background: transparent;
+          border: none;
+          font-style: normal;
+          line-height: 24px;
+
+          &:disabled {
+            color: var(--light-grey);
+          }
+        }
+      }
+    }
+  }
+}
