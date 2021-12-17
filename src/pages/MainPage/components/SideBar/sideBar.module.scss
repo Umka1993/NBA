@@ -9,13 +9,14 @@
   .generalItems {
     display: flex;
     flex-direction: column;
-    //flex: 99%;
+
     .items {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       margin-top: 37px;
+      color: var(--light-grey);
 
       p {
         font-size: 12px;
@@ -23,12 +24,12 @@
         font-style: normal;
         font-weight: 500;
         line-height: 150%;
-        color: var(--light-grey);
       }
     }
   }
 
   .itemsLogout {
+    padding-bottom: 32px;
     font-size: 12px;
     font-family: var(--avenir-medium);
     font-weight: 500;
@@ -36,7 +37,6 @@
     color: var(--lightest-red);
     font-style: normal;
     line-height: 150%;
-    //flex: 1%;
     p {
       font-size: 12px;
       font-family: var(--avenir-medium);
@@ -50,18 +50,27 @@
 @media (min-width: 992px) and (max-width: 1199px) {
   .sideBar {
     padding: 15px 15px;
+    .itemsLogout {
+      padding-bottom: 0;
+    }
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .sideBar {
     padding: 15px 15px;
+    .itemsLogout {
+      padding-bottom: 0;
+    }
   }
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
   .sideBar {
     padding: 15px 5px;
+    .itemsLogout {
+      padding-bottom: 0;
+    }
   }
 }
 
@@ -69,5 +78,8 @@
   .sideBar {
     position: absolute;
     left: -200px;
+    .itemsLogout {
+      padding-bottom: 0;
+    }
   }
 }

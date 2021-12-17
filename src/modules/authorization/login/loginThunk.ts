@@ -1,13 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ResultCodesEnum } from '../../../api/dto/IAutorization';
+import { ISignUpResponse, ResultCodesEnum } from '../../../api/dto/IAutorization';
 import { SignInInputs } from '../../../types';
 import { authApi } from '../../../api/requets.ts/athorization';
+import { AxiosError, AxiosResponse } from 'axios';
 
 export const loginData = createAsyncThunk(
   'login/loginData',
   async ({ Login, Password }: SignInInputs, { rejectWithValue }) => {
     try {
-      const resp = await authApi.signIn({
+      const resp: AxiosResponse<ISignUpResponse> = await authApi.signIn({
         Login,
         Password,
       });
@@ -15,8 +16,15 @@ export const loginData = createAsyncThunk(
       if (resp.status === ResultCodesEnum.Success) {
         return resp.data;
       }
-    } catch (err) {
-      throw rejectWithValue(err);
+    } catch (error) {
+      const err = error as AxiosError;
+      // throw thunkAPI.rejectWithValue;
+      return rejectWithValue(err);
+      // const responseData = {
+      //   statusCode: err.response?.status,
+      // };
+      //
+      // return rejectWithValue(responseData);
     }
   }
 );

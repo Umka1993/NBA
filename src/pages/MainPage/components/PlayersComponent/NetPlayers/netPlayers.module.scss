@@ -1,0 +1,120 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 32px;
+
+  .playersCard {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    width: 30%;
+    max-width: 365px;
+    background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
+    border-radius: 4px 4px 4px 4px;
+    flex-direction: column;
+
+    .mainCard {
+      position: relative;
+      padding-top: 73px;
+
+      .playersImg {
+        img {
+          margin-bottom: -5px;
+          width: 100%;
+        }
+      }
+    }
+
+    .playersInfo {
+      padding: 24px 10px;
+      width: 100%;
+      max-width: 365px;
+      text-align: center;
+      background-color: var(--dark-grey);
+      border-radius: 0 0 4px 4px;
+
+      .playersName {
+        font-size: 18px;
+        font-family: var(--avenir-medium);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 25px;
+        color: var(--white);
+
+        .numberPlayer {
+          color: var(--light-red);
+        }
+      }
+
+      .teamName {
+        margin-top: 12px;
+        font-size: 13px;
+        font-family: var(--avenir-medium);
+        font-weight: 500;
+        color: var(--light-grey);
+        line-height: 18px;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .wrapper {
+    .playersCard {
+      .playersInfo {
+        padding: 24px 10px;
+      }
+    }
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .wrapper {
+    .playersCard {
+      width: 49%;
+
+      .playersInfo {
+        padding: 22px 11px;
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .wrapper {
+    .playersCard {
+      width: 49%;
+
+      .playersInfo {
+        padding: 22px 11px;
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .wrapper {
+    .playersCard {
+      width: 49%;
+
+      .mainCard {
+        padding-top: 35px;
+        padding-bottom: 25px;
+
+        .playersImg {
+          img {
+            margin-bottom: -30px;
+          }
+        }
+      }
+
+      .playersInfo {
+        padding: 22px 11px;
+
+        .playersName {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

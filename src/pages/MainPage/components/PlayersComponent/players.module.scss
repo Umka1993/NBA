@@ -1,0 +1,86 @@
+.contentWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 100px;
+  min-width: 100%;
+  flex-direction: column;
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .blockContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .contentWrap {
+    padding: 16px 15px;
+
+    .navFooter {
+      .pagination {
+        span {
+          margin: 0 19px;
+        }
+
+        ul {
+          li {
+            margin-right: 17px;
+
+            &.active {
+              padding: 7px 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .contentWrap {
+    padding: 16px 12px;
+
+    .nav {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      button {
+        margin-top: 16px;
+        width: 300px;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .contentWrap {
+    padding: 16px 12px;
+
+    .nav {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      //.teamsFilterSelect {
+      //  width: 100%;
+      //}
+      //
+      //button {
+      //  margin-top: 16px;
+      //  width: 300px;
+      //}
+    }
+  }
+}

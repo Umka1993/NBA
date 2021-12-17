@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { registrationData } from '../../../../modules/authorization/registration/registrationThunk';
 import { useAppDispatch } from '../../../../core/redux/hooks/redux';
 import { Input } from '../../../../ui/inputs/Input/Input';
-import { SignBtn } from '../../../../ui/buttons/SignBtn/SignBtn';
+import { FormBtn } from '../../../../ui/buttons/FormBtn/FormBtn';
 
 export const SignUpForm = (): JSX.Element => {
   const {
@@ -76,9 +76,9 @@ export const SignUpForm = (): JSX.Element => {
             {errors.acceptAgreement && <span>{errors.acceptAgreement.message}</span>}
           </div>
 
-          <SignBtn isDirty={isDirty} isValid={isValid}>
+          <FormBtn isDirty={isDirty} isValid={isValid}>
             Sign Up
-          </SignBtn>
+          </FormBtn>
         </div>
         <div className={s.signUpRow}>
           <p>

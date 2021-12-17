@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { LabelNames, SignInInputs } from 'types';
 import { Link, useNavigate } from 'react-router-dom';
 import { Input } from 'ui/inputs/Input/Input';
-import { SignBtn } from 'ui/buttons/SignBtn/SignBtn';
+import { FormBtn } from 'ui/buttons/FormBtn/FormBtn';
 import { useAppDispatch } from '../../../../core/redux/hooks/redux';
 import { loginData } from '../../../../modules/authorization/login/loginThunk';
 
@@ -22,7 +22,7 @@ export const SignInForm = (): JSX.Element => {
   const onSubmit = async (data: SignInInputs) => {
     const { meta } = await dispatch(loginData(data));
     if (meta.requestStatus === 'fulfilled') {
-      navigate('/mainPage');
+      navigate('/mainPage/Teams');
     }
   };
 
@@ -46,10 +46,9 @@ export const SignInForm = (): JSX.Element => {
             />
             {errors.Password && <span>{errors.Password.message}</span>}
           </div>
-
-          <SignBtn isDirty={isDirty} isValid={isValid}>
+          <FormBtn isDirty={isDirty} isValid={isValid}>
             Sign In
-          </SignBtn>
+          </FormBtn>
 
           <div className={s.signUpRow}>
             <p>

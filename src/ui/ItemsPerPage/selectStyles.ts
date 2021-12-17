@@ -26,6 +26,10 @@ export const commandsPerPageStyles: StylesConfig<selectValues, true> = {
       margin: 0,
       border: '1px solid #d1d1d1',
       boxShadow: 'none',
+
+      '@media only screen and (max-width: 575px)': {
+        width: '60px',
+      },
     };
   },
   container: (styles) => {
@@ -36,6 +40,18 @@ export const commandsPerPageStyles: StylesConfig<selectValues, true> = {
       justifyContent: 'center',
     };
   },
+  valueContainer: (styles) => {
+    return {
+      ...styles,
+      textAlign: 'center',
+
+      '@media only screen and (max-width: 575px)': {
+        padding: '2px 0',
+        textAlign: 'center',
+      },
+    };
+  },
+
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
     return {
       ...styles,

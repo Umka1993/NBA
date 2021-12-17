@@ -3,7 +3,7 @@ import { Message, MultipleFieldErrors, Path, Ref, UseFormRegister } from 'react-
 export interface IInputProps<T, L = void> {
   register: UseFormRegister<T>;
   name: Path<T>;
-  label: Path<L>;
+  label?: Path<L>;
   value?: string;
 }
 
@@ -24,6 +24,19 @@ export interface SignInInputs {
   Password: string;
 }
 
+export interface ITeamFormNames {
+  teamName: string;
+  Division: string;
+  Conference: string;
+  yearFoundation: string;
+  photoInput: string;
+}
+
+export interface ITeamFormLabels extends ITeamFormNames {
+  'Year of foundation': string;
+  Name: string;
+}
+
 export type FieldError = {
   type: string;
   ref?: Ref;
@@ -34,7 +47,7 @@ export type FieldError = {
 export interface IState {
   isLogin: boolean;
   isRegistration: boolean;
-  login: string;
+  userName: string;
   isLoading: boolean;
   error: boolean;
   message: string;

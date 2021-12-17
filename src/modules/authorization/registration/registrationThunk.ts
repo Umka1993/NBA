@@ -8,6 +8,7 @@ export const registrationData = createAsyncThunk(
     try {
       const resp = await authApi.signUp({ Login, Password, userName });
       if (resp.status === ResultCodesEnum.Success) {
+        localStorage.setItem('SavedToken', resp.data.token);
         return resp.data;
       }
     } catch (err) {

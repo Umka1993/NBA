@@ -8,12 +8,31 @@
     font-style: normal;
     line-height: 24px;
   }
+  .labelPhoto {
+    .photoBlock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 0;
+      //width: 40%;
+      background: var(--light-grey);
+      border-radius: 10px;
+      img {
+        width: 71px;
+        height: 66px;
+      }
+    }
+  }
 
   .inputWrap {
     display: flex;
     flex-direction: row;
     background: var(--lightest-grey);
     border-radius: 4px;
+    .inputPhoto {
+      display: none;
+      font-size: 0;
+    }
   }
 
   input {
@@ -53,7 +72,7 @@
   }
 
   .error {
-    border: 1px solid #ff768e;
+    border: 1px solid var(--lightest-red);
     border-radius: 4px;
   }
 
@@ -62,7 +81,7 @@
     font-size: 12px;
     font-family: 'Avenir', sans-serif;
     font-weight: 500;
-    color: #ff768e;
+    color: var(--lightest-red);
     font-style: normal;
     line-height: 150%;
   }

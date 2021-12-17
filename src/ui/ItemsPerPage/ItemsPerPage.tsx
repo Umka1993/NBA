@@ -12,8 +12,8 @@ export const ItemsPerPage = () => {
   return (
     <>
       <Select
-        className="teamsFilterSelect"
-        classNamePrefix="teamsFilterSelect"
+        className="ItemsPerPage"
+        classNamePrefix="ItemsPerPage"
         options={netItems}
         styles={commandsPerPageStyles}
         defaultValue={netItems[0]}

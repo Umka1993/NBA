@@ -1,16 +1,14 @@
-import { AsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginData } from './loginThunk';
 import { errorProcess } from '../errorProcess';
-
-type GenericAsyncThunk = AsyncThunk<unknown, unknown, any>;
-type RejectedAction = ReturnType<GenericAsyncThunk['rejected']>;
+import { Error, ISignUpResponse } from 'api/dto/IAutorization';
 
 const loginSlice = createSlice({
   name: 'auth',
   initialState: {
     isLogin: false,
     isRegistration: false,
-    login: '',
+    userName: '',
     isLoading: false,
     error: false,
     message: '',
@@ -22,18 +20,21 @@ const loginSlice = createSlice({
       state.isLoading = true;
       state.error = false;
     });
-    builder.addCase(loginData.fulfilled, (state, action) => {
+    builder.addCase(loginData.fulfilled.type, (state, action: PayloadAction<ISignUpResponse>) => {
       localStorage.setItem('SavedToken', state.token);
       state.isLoading = false;
       state.error = false;
       state.token = action.payload.token;
+      state.userName = action.payload.name;
+
       console.log(localStorage);
-      state.login = action.meta.arg.Login;
       state.isLogin = true;
     });
-    builder.addCase(loginData.rejected, (state, action: RejectedAction) => {
+
+    builder.addCase(loginData.rejected.type, (state, action: PayloadAction<Error>) => {
       state.isLoading = false;
-      errorProcess(state, action);
+      const status = action.payload.response.status;
+      errorProcess(state, status);
     });
   },
 });

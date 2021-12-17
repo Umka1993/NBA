@@ -1,0 +1,38 @@
+.constructorWrap {
+  display: flex;
+  padding: 24px 32px;
+  width: 100%;
+  height: calc(100vh - 150px);
+  background: var(--white);
+  border-radius: 10px;
+  flex-direction: column;
+
+  .breadcrumb {
+    width: 100%;
+  }
+
+  .constructorTeam {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 48px 41px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .constructorWrap {
+    height: calc(100vh - 116px);
+  }
+}
+@media (max-width: 991px) {
+  .constructorWrap {
+    height: calc(100vh - 29px);
+  }
+}
+
+@media (max-width: 575px) {
+  .constructorWrap {
+    .constructorTeam {
+      padding: 30px 0;
+    }
+  }
+}

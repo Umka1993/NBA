@@ -1,11 +1,7 @@
 import { IState } from '../../types';
 import { ResultCodesEnum } from '../../api/dto/IAutorization';
 
-export const errorProcess = (
-  state: IState,
-  action: { payload: { response?: { status: number } } }
-): void => {
-  const status = action.payload.response.status;
+export const errorProcess = (state: IState, status: number): void => {
   if (status === ResultCodesEnum.DuplicateData) {
     state.error = true;
     state.message = 'A user with such data already exists.';

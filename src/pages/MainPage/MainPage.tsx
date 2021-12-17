@@ -11,7 +11,9 @@ export const MainPage = ({}): JSX.Element => {
       <div className={s.main}>
         <div className={s.wrapMain}>
           <SideBar />
-          <Outlet />
+          <div className={s.content}>
+            <Outlet />
+          </div>
         </div>
       </div>
     </>

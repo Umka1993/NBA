@@ -1,0 +1,76 @@
+.addTeamForm {
+  width: 100%;
+
+  form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    .componentWrap {
+      display: flex;
+      margin-bottom: 24px;
+      width: 100%;
+      border-radius: 4px;
+      flex-direction: column;
+
+      span {
+        margin-top: 5px;
+        font-size: 12px;
+        font-family: 'Avenir', sans-serif;
+        font-weight: 500;
+        color: var(--lightest-red);
+        font-style: normal;
+        line-height: 150%;
+      }
+    }
+
+    .error {
+      display: flex;
+    }
+
+    .loadPhoto {
+      width: 35%;
+    }
+
+    .data {
+      width: 40%;
+    }
+
+    .formBtns {
+      display: flex;
+      justify-content: space-between;
+
+      .wrapBtn {
+        width: 45%;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .addTeamForm {
+    form {
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .loadPhoto {
+        width: 90%;
+      }
+
+      .data {
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .addTeamForm {
+    form {
+      .data {
+        width: 100%;
+      }
+    }
+  }
+}
