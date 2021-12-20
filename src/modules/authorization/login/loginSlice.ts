@@ -21,11 +21,13 @@ const loginSlice = createSlice({
       state.error = false;
     });
     builder.addCase(loginData.fulfilled.type, (state, action: PayloadAction<ISignUpResponse>) => {
-      localStorage.setItem('SavedToken', state.token);
+      localStorage.setItem('SavedToken', action.payload.token);
+      localStorage.setItem('Name', action.payload.name);
       state.isLoading = false;
       state.error = false;
       state.token = action.payload.token;
-      state.userName = action.payload.name;
+
+      // state.userName = action.payload.name;
 
       console.log(localStorage);
       state.isLogin = true;

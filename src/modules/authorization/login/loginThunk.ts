@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ISignUpResponse, ResultCodesEnum } from '../../../api/dto/IAutorization';
 import { SignInInputs } from '../../../types';
-import { authApi } from '../../../api/requets.ts/athorization';
+import { authApi } from '../../../api/requets/athorization';
 import { AxiosError, AxiosResponse } from 'axios';
 
 export const loginData = createAsyncThunk(

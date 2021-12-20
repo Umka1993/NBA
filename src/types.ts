@@ -53,3 +53,19 @@ export interface IState {
   message: string;
   token: string;
 }
+
+export interface teamsCollectionResponse {
+  data: [
+    {
+      name: 'string';
+      foundationYear: 0;
+      division: 'string';
+      conference: 'string';
+      imageUrl: 'string';
+      id: 0;
+    }
+  ];
+  count: 0;
+  page: 0;
+  size: 0;
+}
