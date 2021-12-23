@@ -5,15 +5,21 @@ import { privateRoutes, publicRoutes } from './routes';
 import { PlayersComponent } from './MainPage/components/PlayersComponent/PlayersComponent';
 import { SignInPage } from './SignInPage/SignInPage';
 import { TeamsComponent } from './MainPage/components/TeamsComponent/TeamsComponent';
-import { TeamConstructor } from './MainPage/components/TeamsComponent/TeamConstructor/TeamConstructor';
+import { useAppSelector } from '../core/redux/hooks/redux';
 import { Teams } from './MainPage/components/TeamsComponent/Teams/Teams';
-import { NetTeams } from './MainPage/components/TeamsComponent/Teams/NetTeams/NetTeams';
 import { DefaultBlock } from '../ui/DefaultBlock/DefaultBlock';
-import defaultTeamsImg from 'assets/icon/defaultTeams.png';
+import { TeamConstructor } from './MainPage/components/TeamsComponent/TeamConstructor/TeamConstructor';
+
+import defaultTeams from 'assets/icon/defaultTeams.png';
 
 export const AppRouter = (): JSX.Element => {
-  const isAuthorised = localStorage.getItem('token');
+  const isAuthorised = localStorage.getItem('SavedToken');
+  const token = useAppSelector((state) => state.loginSliceReducer.token);
+  const teamsCollection = useAppSelector((state) => state.teamsReducer.teamsCollection);
+  // const teamsCollection = true;
+  // const teamsCollection.length = 1
   const [teams, setTeams] = useState(false);
+  // console.log(!teamsCollection.length);
 
   return (
     <Routes>
@@ -24,20 +30,16 @@ export const AppRouter = (): JSX.Element => {
       {isAuthorised ? (
         privateRoutes.map(({ path, Element }) => (
           <Route key={path} path={path} element={Element}>
-            <Route path="/Teams/*" element={<TeamsComponent />}>
+            <Route path="Teams/*" element={<TeamsComponent />}>
               <Route path="/" element={<Teams />}>
-                {teams ? (
-                  <>
-                    <Route path="addNewTeam" element={<TeamConstructor />} />
-                    <Route path="netTeams" element={<NetTeams />} />
-                  </>
-                ) : (
-                  <>
-                    <Route path="addNewTeam" element={<TeamConstructor />} />
-                    <Route path="/" element={<DefaultBlock img={defaultTeamsImg} />} />
-                  </>
-                )}
+                <Route path="/" element={<DefaultBlock img={defaultTeams} />} />
+                {/*{teamsCollection.length ? (*/}
+                {/*  <Route path="/" element={<DefaultBlock img={defaultTeams} />} />*/}
+                {/*) : (*/}
+                {/*  <Route path="netTeams" element={<NetTeams />} />*/}
+                {/*)}*/}
               </Route>
+              <Route path="addNewTeam" element={<TeamConstructor />} />
             </Route>
             <Route path="Players" element={<PlayersComponent />} />
           </Route>

@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { teams } from './commandsThunk';
-import { errorProcess } from '../authorization/errorProcess';
 import { Error } from '../../api/dto/IAutorization';
+import { teamsCollectionResponse } from '../../types';
+import { errorProcess } from '../authorization/errorProcess';
 
 const teamsSlice = createSlice({
   name: 'commands',
@@ -14,26 +15,37 @@ const teamsSlice = createSlice({
     token: '',
     userName: '',
     userAvatar: '',
+    teamsCollection: [
+      {
+        name: '',
+        foundationYear: 0,
+        division: '',
+        conference: '',
+        imageUrl: '',
+        id: 0,
+      },
+    ],
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(teams.pending, (state, action) => {
       state.isLoading = true;
       state.error = false;
-      debugger;
     });
-    builder.addCase(teams.fulfilled.type, (state, action) => {
-      state.isLoading = false;
-      state.error = false;
-    });
+    builder.addCase(
+      teams.fulfilled.type,
+      (state, action: PayloadAction<teamsCollectionResponse>) => {
+        state.isLoading = false;
+        state.error = false;
+        state.teamsCollection = action.payload.data;
+      }
+    );
 
     builder.addCase(teams.rejected.type, (state, action: PayloadAction<Error>) => {
       state.isLoading = false;
-      // const status = action.payload.response.status;
+      const status = action.payload.response.status;
 
-      debugger;
-
-      // errorProcess(state, status);
+      errorProcess(state, status);
     });
   },
 });

@@ -1,11 +1,13 @@
 import React from 'react';
 import s from './addTeamForm.module.scss';
 import { InputLoadPhoto } from '../../../../../../ui/inputs/InputLoadPhoto/InputLoadPhoto';
-import { ITeamFormLabels, ITeamFormNames } from '../../../../../../types';
+import { commandImg, ITeamFormLabels, ITeamFormNames } from '../../../../../../types';
 import { Input } from '../../../../../../ui/inputs/Input/Input';
 import { CancelBtn } from '../../../../../../ui/buttons/CancelBtn/cancelBtn';
 import { FormBtn } from '../../../../../../ui/buttons/FormBtn/FormBtn';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { saveImage } from '../../../../../../modules/addCommand/saveImage/saveImageThunk';
 
 export const AddTeamForm = () => {
   const {
@@ -14,8 +16,12 @@ export const AddTeamForm = () => {
     formState: { errors, isValid, isDirty },
   } = useForm<ITeamFormNames>({ mode: 'onChange' });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const dispatch = useDispatch();
+
+  const onSubmit = (data: commandImg) => {
+    // console.log(data.photoInput);
+    // debugger;
+    dispatch(saveImage(data));
   };
   return (
     <div className={s.addTeamForm}>
@@ -25,6 +31,7 @@ export const AddTeamForm = () => {
             <InputLoadPhoto<ITeamFormNames, ITeamFormLabels>
               register={register}
               name={'photoInput'}
+              // getImage={getImage}
             />
             {errors.photoInput && <span>{errors.photoInput.message}</span>}
           </div>

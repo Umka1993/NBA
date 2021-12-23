@@ -5,7 +5,6 @@ import { AddTeamForm } from './AddTeamForm/AddTeamForm';
 
 export const TeamConstructor = () => {
   const [crumbs, setCrumbs] = useState(['Team', 'Add new team']);
-
   const selected = (crumb: string) => {
     console.log(crumb);
   };

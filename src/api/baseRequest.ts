@@ -3,7 +3,8 @@ import axios from 'axios';
 const baseRequestAxios = axios.create({
   baseURL: 'http://dev.trainee.dex-it.ru',
   headers: {
-    'Content-Type': 'application/json',
+    // 'Content-Type': 'application/json',
+    // 'Content-Type': 'multipart/form-data',
     'accept': 'application/json'
   }
 })
@@ -15,10 +16,9 @@ const baseRequestAxios = axios.create({
 // };
 
 baseRequestAxios.interceptors.request.use((request) => {
-  const token = localStorage.getItem('token') ? localStorage.getItem('token') : null;
-  debugger;
+  const token = localStorage.getItem('SavedToken') ? localStorage.getItem('SavedToken') : null;
   if (request.headers && token) {
-    request.headers.Authorization = '7127f45959b14c3b07f0a9ff558d11c63055facbffd7694c5a';
+    request.headers.Authorization = `Bearer ${token}`;
   }
   return request;
 });

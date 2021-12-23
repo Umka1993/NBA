@@ -5,8 +5,6 @@ import { teamsCollectionResponse } from '../../types';
 
 export const getCommands = {
   getCommands(params: IParams): Promise<AxiosResponse<teamsCollectionResponse>> {
-    debugger;
-    // axiosHeadersUpdater();
     return baseRequestAxios.get<teamsCollectionResponse>('/api/Team/GetTeams', {
       params,
     });

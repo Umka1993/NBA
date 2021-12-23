@@ -3,14 +3,27 @@ import React, { useEffect, useState } from 'react';
 import loadPhoto from 'assets/icon/loadPhoto.png';
 import { IInputProps } from '../../../types';
 import { useDropzone } from 'react-dropzone';
+import { useDispatch } from 'react-redux';
+import { saveImage } from '../../../modules/addCommand/saveImage/saveImageThunk';
 
-export const InputLoadPhoto = <T, L>({ register, name, value }: IInputProps<T, L>): JSX.Element => {
+export const InputLoadPhoto = <T, L>({
+  register,
+  name,
+  value,
+}: // getImage,
+IInputProps<T, L>): JSX.Element => {
   const [image, setImage] = useState<File>();
   const [preview, setPreview] = useState<string | null>();
+  const dispatch = useDispatch();
 
-  const { getRootProps, getInputProps } = useDropzone({
+  // const data = new FormData();
+  // data.append('image', image);
+  // console.log('data', data);
+
+  const { getRootProps } = useDropzone({
     accept: 'image/*',
     onDrop: (acceptedFiles) => {
+      // @ts-ignore
       acceptedFiles.map((files) => setImage(files));
     },
   });
@@ -24,7 +37,8 @@ export const InputLoadPhoto = <T, L>({ register, name, value }: IInputProps<T, L
     if (image) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPreview(reader.result as string);
+        const result = reader.result as string;
+        setPreview(result);
       };
       reader.readAsDataURL(image);
     } else {
@@ -57,8 +71,8 @@ export const InputLoadPhoto = <T, L>({ register, name, value }: IInputProps<T, L
         <input
           {...register(name, { required: 'This is required.' })}
           id={name}
-          value={value}
           type="file"
+          value={value}
           className={s.inputPhoto}
           accept="image/png, image/gif, image/jpeg"
           onChange={(event) => {

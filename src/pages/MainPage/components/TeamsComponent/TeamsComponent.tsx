@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './teamsComponent.module.scss';
-import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { teams } from '../../../../modules/Comands/commandsThunk';
+import { teams } from '../../../../modules/getComands/commandsThunk';
+import { Outlet } from 'react-router';
 
 export interface IParams {
   name: string | null;
@@ -11,24 +11,20 @@ export interface IParams {
 }
 
 export const TeamsComponent = (): JSX.Element => {
-  // const { userName } = useAppSelector((state) => state.loginSliceReducer);
   const userName = localStorage.getItem('Name');
   const dispatch = useDispatch();
-
   const params: IParams = {
     name: userName,
     Page: 1,
     PageSize: 6,
   };
 
-  // @ts-ignore
-  const teamsCollection = dispatch(teams(params));
+  useEffect(() => {
+    dispatch(teams(params));
+  }, []);
 
-  // console.log('teamsCollection', teamsCollection);
   return (
     <div className={s.contentWrap}>
-      {/*<Teams />*/}
-      {/*<TeamConstructor />*/}
       <Outlet />
     </div>
   );

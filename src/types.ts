@@ -5,6 +5,7 @@ export interface IInputProps<T, L = void> {
   name: Path<T>;
   label?: Path<L>;
   value?: string;
+  // getImage?: (image: string) => void;
 }
 
 export interface FormNames extends SignInInputs {
@@ -30,6 +31,7 @@ export interface ITeamFormNames {
   Conference: string;
   yearFoundation: string;
   photoInput: string;
+  preview: '';
 }
 
 export interface ITeamFormLabels extends ITeamFormNames {
@@ -52,6 +54,7 @@ export interface IState {
   error: boolean;
   message: string;
   token: string;
+  // teamsCollection: teamsCollectionResponse;
 }
 
 export interface teamsCollectionResponse {
@@ -68,4 +71,12 @@ export interface teamsCollectionResponse {
   count: 0;
   page: 0;
   size: 0;
+}
+
+export interface commandImg {
+  photoInput: File;
+}
+
+export interface saveImgResponse {
+  data: string;
 }

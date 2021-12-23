@@ -4,12 +4,12 @@ import { SearchInput } from '../../SearchInput/SearchInput';
 import { Button } from '../../../../../ui/buttons/Button/Button';
 import { NavigationFooter } from '../../../../../ui/NavigationFooter/NavigationFooter';
 import { NavLink, Outlet } from 'react-router-dom';
-import { DefaultBlock } from '../../../../../ui/DefaultBlock/DefaultBlock';
-import { NetTeams } from './NetTeams/NetTeams';
-import defaultTeamsImg from 'assets/icon/defaultTeams.png';
+import { useAppSelector } from '../../../../../core/redux/hooks/redux';
 
 export const Teams = () => {
   const [teams, setTeams] = useState(false);
+  const { teamsCollection } = useAppSelector((state) => state.teamsReducer);
+
   return (
     <>
       <div className={s.nav}>
@@ -19,7 +19,6 @@ export const Teams = () => {
         </NavLink>
       </div>
       <div className={s.blockContent}>
-        {/*{teams ? <NetTeams /> : <DefaultBlock img={defaultTeamsImg} />}*/}
         <Outlet />
       </div>
       <NavigationFooter />
