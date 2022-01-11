@@ -1,27 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './addTeamForm.module.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 import { InputLoadPhoto } from '../../../../../../ui/inputs/InputLoadPhoto/InputLoadPhoto';
-import { commandImg, ITeamFormLabels, ITeamFormNames } from '../../../../../../types';
+import {
+  commandsDataForm,
+  IDataCommandRequest,
+  ITeamFormLabels,
+  ITeamFormNames,
+} from '../../../../../../types';
 import { Input } from '../../../../../../ui/inputs/Input/Input';
 import { CancelBtn } from '../../../../../../ui/buttons/CancelBtn/cancelBtn';
 import { FormBtn } from '../../../../../../ui/buttons/FormBtn/FormBtn';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { saveImage } from '../../../../../../modules/addCommand/saveImage/saveImageThunk';
+import { saveImage } from '../../../../../../modules/Commands/saveImage/saveImageThunk';
+import { useAppSelector } from '../../../../../../core/redux/hooks/redux';
+import { InputYearFoundation } from '../../../../../../ui/inputs/InputYerFoundation/InputYerFoundation';
+import { addCommand } from '../../../../../../modules/Commands/addComand/addCommandThunk';
+
+// const Controller = ({ control, register, name, rules, render }) => {
+//   const props = register(name);
+//   return render();
+// };
 
 export const AddTeamForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid, isDirty },
+    control,
   } = useForm<ITeamFormNames>({ mode: 'onChange' });
-
+  const [picture, getPicture] = useState<string | Blob>('');
+  const { imageUrl } = useAppSelector((state) => state.saveImageReducer);
   const dispatch = useDispatch();
+  const [dataForm, setDataForm] = useState<commandsDataForm>();
+  console.log(dataForm);
+  useEffect(() => {
+    if (dataForm) {
+      const dataCommand: IDataCommandRequest = {
+        name: dataForm.teamName,
+        foundationYear: dataForm.yearFoundation,
+        division: dataForm.division,
+        conference: dataForm.conference,
+        imageUrl: imageUrl,
+      };
+      console.log(dataCommand);
 
-  const onSubmit = (data: commandImg) => {
-    // console.log(data.photoInput);
-    // debugger;
-    dispatch(saveImage(data));
+      dispatch(addCommand(dataCommand));
+    }
+  }, [imageUrl]);
+
+  const onSubmit = (data: commandsDataForm) => {
+    console.log(data);
+    debugger;
+    const formData = new FormData();
+    formData.append('file', picture);
+    dispatch(saveImage(formData));
+    setDataForm(data);
   };
   return (
     <div className={s.addTeamForm}>
@@ -31,7 +66,7 @@ export const AddTeamForm = () => {
             <InputLoadPhoto<ITeamFormNames, ITeamFormLabels>
               register={register}
               name={'photoInput'}
-              // getImage={getImage}
+              getPicture={getPicture}
             />
             {errors.photoInput && <span>{errors.photoInput.message}</span>}
           </div>
@@ -46,30 +81,39 @@ export const AddTeamForm = () => {
             {errors.teamName && <span>{errors.teamName.message}</span>}
           </div>
 
-          <div className={`${errors.Division ? s.error : ''} ${s.componentWrap}`}>
+          <div className={`${errors.division ? s.error : ''} ${s.componentWrap}`}>
             <Input<ITeamFormNames, ITeamFormLabels>
               register={register}
-              name={'Division'}
+              name={'division'}
               label={'Division'}
             />
-            {errors.Division && <span>{errors.Division.message}</span>}
+            {errors.division && <span>{errors.division.message}</span>}
           </div>
 
-          <div className={`${errors.Conference ? s.error : ''} ${s.componentWrap}`}>
+          <div className={`${errors.conference ? s.error : ''} ${s.componentWrap}`}>
             <Input<ITeamFormNames, ITeamFormLabels>
               register={register}
-              name={'Conference'}
+              name={'conference'}
               label={'Conference'}
             />
-            {errors.Conference && <span>{errors.Conference.message}</span>}
+            {errors.conference && <span>{errors.conference.message}</span>}
           </div>
 
           <div className={`${errors.yearFoundation ? s.error : ''} ${s.componentWrap}`}>
-            <Input<ITeamFormNames, ITeamFormLabels>
-              register={register}
-              name={'yearFoundation'}
-              label={'Year of foundation'}
+            {/*<InputYerFoundation<ITeamFormNames, ITeamFormLabels>*/}
+            {/*  register={register}*/}
+            {/*  name={'yearFoundation'}*/}
+            {/*  label={'Year of foundation'}*/}
+            {/*/>*/}
+            <Controller
+              control={control}
+              name="yearFoundation"
+              render={({ field }) => {
+                // return <InputYearFoundation field={field} name={'yearFoundation'} />;
+                return <InputYearFoundation field={field} name="yearFoundation" />;
+              }}
             />
+
             {errors.yearFoundation && <span>{errors.yearFoundation.message}</span>}
           </div>
 

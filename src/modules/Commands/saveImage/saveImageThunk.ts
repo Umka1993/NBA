@@ -1,14 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ResultCodesEnum } from '../../../api/dto/IAutorization';
-import { commandImg, saveImgResponse } from '../../../types';
 import { AxiosError, AxiosResponse } from 'axios';
 import { savePicture } from '../../../api/requets/saveImage';
 
 export const saveImage = createAsyncThunk(
   'image/saveImg',
-  async ({ photoInput }: commandImg, { rejectWithValue }) => {
+  async (formData: File | FormData, { rejectWithValue }) => {
     try {
-      const resp: AxiosResponse<saveImgResponse> = await savePicture.save({ photoInput });
+      const resp: AxiosResponse<string> = await savePicture.save(formData);
 
       if (resp.status === ResultCodesEnum.Success) {
         return resp.data;

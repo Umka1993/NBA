@@ -1,35 +1,28 @@
 import s from '../styleInput.module.scss';
 import React, { useEffect, useState } from 'react';
 import loadPhoto from 'assets/icon/loadPhoto.png';
-import { IInputProps } from '../../../types';
+import { IInputPhoto } from '../../../types';
 import { useDropzone } from 'react-dropzone';
-import { useDispatch } from 'react-redux';
-import { saveImage } from '../../../modules/addCommand/saveImage/saveImageThunk';
 
 export const InputLoadPhoto = <T, L>({
   register,
   name,
   value,
-}: // getImage,
-IInputProps<T, L>): JSX.Element => {
+  getPicture,
+}: IInputPhoto): JSX.Element => {
   const [image, setImage] = useState<File>();
   const [preview, setPreview] = useState<string | null>();
-  const dispatch = useDispatch();
-
-  // const data = new FormData();
-  // data.append('image', image);
-  // console.log('data', data);
 
   const { getRootProps } = useDropzone({
     accept: 'image/*',
     onDrop: (acceptedFiles) => {
-      // @ts-ignore
       acceptedFiles.map((files) => setImage(files));
     },
   });
   const getFile = (file: File): void => {
     if (file) {
       setImage(file);
+      getPicture(file);
     }
   };
 

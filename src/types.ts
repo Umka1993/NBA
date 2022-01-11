@@ -1,11 +1,25 @@
-import { Message, MultipleFieldErrors, Path, Ref, UseFormRegister } from 'react-hook-form';
+import {
+  ControllerRenderProps,
+  Message,
+  MultipleFieldErrors,
+  Noop,
+  Path,
+  Ref,
+  UseFormRegister,
+} from 'react-hook-form';
 
 export interface IInputProps<T, L = void> {
   register: UseFormRegister<T>;
   name: Path<T>;
   label?: Path<L>;
   value?: string;
-  // getImage?: (image: string) => void;
+  onChange?: (event: any[]) => void;
+  onBlur?: Noop;
+  selected?: string;
+}
+
+export interface IInputPhoto extends IInputProps<any> {
+  getPicture: (file: File) => void;
 }
 
 export interface FormNames extends SignInInputs {
@@ -25,18 +39,26 @@ export interface SignInInputs {
   Password: string;
 }
 
+export interface IYearFoundation<T> {
+  name: T;
+  field: ControllerRenderProps<T>;
+}
+
 export interface ITeamFormNames {
   teamName: string;
-  Division: string;
-  Conference: string;
+  division: string;
+  conference: string;
   yearFoundation: string;
   photoInput: string;
   preview: '';
+  ReactDatepicker: Date;
 }
 
 export interface ITeamFormLabels extends ITeamFormNames {
   'Year of foundation': string;
   Name: string;
+  Division: string;
+  Conference: string;
 }
 
 export type FieldError = {
@@ -54,6 +76,8 @@ export interface IState {
   error: boolean;
   message: string;
   token: string;
+  imageUrl?: string;
+
   // teamsCollection: teamsCollectionResponse;
 }
 
@@ -73,10 +97,22 @@ export interface teamsCollectionResponse {
   size: 0;
 }
 
-export interface commandImg {
-  photoInput: File;
+export interface commandsDataForm {
+  photoInput: string;
+  teamName: string;
+  yearFoundation: number;
+  division: string;
+  conference: string;
 }
 
-export interface saveImgResponse {
-  data: string;
+export interface IDataCommandRequest {
+  name: string;
+  foundationYear: number;
+  division: string;
+  conference: string;
+  imageUrl: string;
+}
+
+export interface INewCommandResponse extends IDataCommandRequest {
+  id: number;
 }

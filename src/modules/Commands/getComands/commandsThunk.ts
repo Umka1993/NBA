@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { ResultCodesEnum } from '../../api/dto/IAutorization';
-import { getCommands } from '../../api/requets/getCommands';
+import { ResultCodesEnum } from '../../../api/dto/IAutorization';
+import { getCommands } from '../../../api/requets/getCommands';
 import { AxiosError, AxiosResponse } from 'axios';
-import { IParams } from '../../pages/MainPage/components/TeamsComponent/TeamsComponent';
-import { teamsCollectionResponse } from '../../types';
+import { IParams } from '../../../pages/MainPage/components/TeamsComponent/TeamsComponent';
+import { teamsCollectionResponse } from '../../../types';
 
 export const teams = createAsyncThunk(
   'teams/teams',

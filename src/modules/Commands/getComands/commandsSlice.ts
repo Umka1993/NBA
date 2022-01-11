@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { teams } from './commandsThunk';
-import { Error } from '../../api/dto/IAutorization';
-import { teamsCollectionResponse } from '../../types';
-import { errorProcess } from '../authorization/errorProcess';
+import { Error } from '../../../api/dto/IAutorization';
+import { teamsCollectionResponse } from '../../../types';
+import { errorProcess } from '../../authorization/errorProcess';
 
 const teamsSlice = createSlice({
   name: 'commands',

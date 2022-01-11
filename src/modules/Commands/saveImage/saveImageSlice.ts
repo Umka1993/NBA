@@ -1,11 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Error } from 'api/dto/IAutorization';
-import { errorProcess } from '../../authorization/errorProcess';
-import { teamsCollectionResponse } from 'types';
 import { saveImage } from './saveImageThunk';
 
 const saveImageSlice = createSlice({
-  name: 'commands',
+  name: 'image',
   initialState: {
     isLogin: false,
     isRegistration: false,
@@ -15,16 +13,7 @@ const saveImageSlice = createSlice({
     token: '',
     userName: '',
     userAvatar: '',
-    teamsCollection: [
-      {
-        name: '',
-        foundationYear: 0,
-        division: '',
-        conference: '',
-        imageUrl: '',
-        id: 0,
-      },
-    ],
+    imageUrl: '',
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -32,14 +21,12 @@ const saveImageSlice = createSlice({
       state.isLoading = true;
       state.error = false;
     });
-    builder.addCase(
-      saveImage.fulfilled.type,
-      (state, action: PayloadAction<teamsCollectionResponse>) => {
-        state.isLoading = false;
-        state.error = false;
-        state.teamsCollection = action.payload.data;
-      }
-    );
+    builder.addCase(saveImage.fulfilled.type, (state, action: PayloadAction<string>) => {
+      state.isLoading = false;
+      state.error = false;
+      state.imageUrl = action.payload;
+      debugger;
+    });
 
     builder.addCase(saveImage.rejected.type, (state, action: PayloadAction<Error>) => {
       state.isLoading = false;

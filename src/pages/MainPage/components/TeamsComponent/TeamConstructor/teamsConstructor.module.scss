@@ -16,6 +16,10 @@
     align-items: center;
     justify-content: space-around;
     padding: 48px 41px;
+    input {
+      width: 100%;
+      flex: auto;
+    }
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import s from './teamsComponent.module.scss';
 import { useDispatch } from 'react-redux';
-import { teams } from '../../../../modules/getComands/commandsThunk';
+import { teams } from '../../../../modules/Commands/getComands/commandsThunk';
 import { Outlet } from 'react-router';
 
 export interface IParams {

@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from '../styleInput.module.scss';
 import { IInputProps } from '../../../types';
-import { useState } from 'react';
 
 export const InputAgreement = <T, L>({ register, name, label }: IInputProps<T, L>): JSX.Element => {
   const [isChecked, setIsChecked] = useState(false);
