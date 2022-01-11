@@ -17,6 +17,8 @@ import { saveImage } from '../../../../../../modules/Commands/saveImage/saveImag
 import { useAppSelector } from '../../../../../../core/redux/hooks/redux';
 import { InputYearFoundation } from '../../../../../../ui/inputs/InputYerFoundation/InputYerFoundation';
 import { addCommand } from '../../../../../../modules/Commands/addComand/addCommandThunk';
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 // const Controller = ({ control, register, name, rules, render }) => {
 //   const props = register(name);
@@ -34,7 +36,7 @@ export const AddTeamForm = () => {
   const { imageUrl } = useAppSelector((state) => state.saveImageReducer);
   const dispatch = useDispatch();
   const [dataForm, setDataForm] = useState<commandsDataForm>();
-  console.log(dataForm);
+
   useEffect(() => {
     if (dataForm) {
       const dataCommand: IDataCommandRequest = {
@@ -44,20 +46,18 @@ export const AddTeamForm = () => {
         conference: dataForm.conference,
         imageUrl: imageUrl,
       };
-      console.log(dataCommand);
-
       dispatch(addCommand(dataCommand));
     }
   }, [imageUrl]);
 
   const onSubmit = (data: commandsDataForm) => {
     console.log(data);
-    debugger;
     const formData = new FormData();
     formData.append('file', picture);
     dispatch(saveImage(formData));
     setDataForm(data);
   };
+
   return (
     <div className={s.addTeamForm}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -80,7 +80,6 @@ export const AddTeamForm = () => {
             />
             {errors.teamName && <span>{errors.teamName.message}</span>}
           </div>
-
           <div className={`${errors.division ? s.error : ''} ${s.componentWrap}`}>
             <Input<ITeamFormNames, ITeamFormLabels>
               register={register}
@@ -89,7 +88,6 @@ export const AddTeamForm = () => {
             />
             {errors.division && <span>{errors.division.message}</span>}
           </div>
-
           <div className={`${errors.conference ? s.error : ''} ${s.componentWrap}`}>
             <Input<ITeamFormNames, ITeamFormLabels>
               register={register}
@@ -98,25 +96,18 @@ export const AddTeamForm = () => {
             />
             {errors.conference && <span>{errors.conference.message}</span>}
           </div>
-
           <div className={`${errors.yearFoundation ? s.error : ''} ${s.componentWrap}`}>
-            {/*<InputYerFoundation<ITeamFormNames, ITeamFormLabels>*/}
-            {/*  register={register}*/}
-            {/*  name={'yearFoundation'}*/}
-            {/*  label={'Year of foundation'}*/}
-            {/*/>*/}
             <Controller
               control={control}
               name="yearFoundation"
+              rules={{ required: 'This is required.' }}
               render={({ field }) => {
-                // return <InputYearFoundation field={field} name={'yearFoundation'} />;
                 return <InputYearFoundation field={field} name="yearFoundation" />;
               }}
             />
 
             {errors.yearFoundation && <span>{errors.yearFoundation.message}</span>}
           </div>
-
           <div className={s.formBtns}>
             <div className={s.wrapBtn}>
               <CancelBtn isDirty={isDirty}>Cancel</CancelBtn>

@@ -16,11 +16,12 @@ export const InputYearFoundation = ({
   const [startDate, setStartDate] = useState('');
 
   const formatDate = (arg: Date) => {
-    const day = arg.getDate();
-    const month = arg.getMonth();
+    // const day = arg.getDate();
+    // const month = arg.getMonth();
     const year = arg.getFullYear();
     setStartDate(`${year}`);
     field.onChange(year);
+    console.log(field.value);
     return `${year}`;
   };
   return (
@@ -29,10 +30,11 @@ export const InputYearFoundation = ({
       <div className={s.inputWrap}>
         <ReactDatePicker
           {...field}
-          // selected={field.value}
           onChange={(date: Date) => formatDate(date)}
+          dateFormat="yyyy"
+          showYearPicker
+          maxDate={new Date()}
           value={startDate}
-          dateFormat={'yyyy'}
         />
       </div>
     </div>
