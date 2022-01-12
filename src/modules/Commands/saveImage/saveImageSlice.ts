@@ -25,7 +25,6 @@ const saveImageSlice = createSlice({
       state.isLoading = false;
       state.error = false;
       state.imageUrl = action.payload;
-      debugger;
     });
 
     builder.addCase(saveImage.rejected.type, (state, action: PayloadAction<Error>) => {

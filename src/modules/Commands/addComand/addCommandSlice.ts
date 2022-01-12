@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Error } from 'api/dto/IAutorization';
 import { addCommand } from './addCommandThunk';
 import { INewCommandResponse } from '../../../types';
+import { errorProcess } from '../../authorization/errorProcess';
 
 const addCommandSlice = createSlice({
   name: 'addCommands',
@@ -34,9 +35,9 @@ const addCommandSlice = createSlice({
 
     builder.addCase(addCommand.rejected.type, (state, action: PayloadAction<Error>) => {
       state.isLoading = false;
-      // const status = action.payload.response.status;
-      //
-      // errorProcess(state, status);
+      const status = action.payload.response.status;
+
+      errorProcess(state, status);
     });
   },
 });

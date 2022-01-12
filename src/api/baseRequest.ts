@@ -1,18 +1,18 @@
 import axios from 'axios';
-// prettier-ignore
+
 const baseRequestAxios = axios.create({
-  baseURL: 'http://dev.trainee.dex-it.ru',
+  baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     // 'Content-Type': 'application/json',
     // 'Content-Type': 'multipart/form-data',
-    'accept': 'application/json'
-  }
-})
+    accept: 'application/json',
+  },
+});
 
 // export const axiosHeadersUpdater = (): void => {
 //   const token = localStorage.getItem('token');
 //   baseRequestAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-//   debugger;
+
 // };
 
 baseRequestAxios.interceptors.request.use((request) => {

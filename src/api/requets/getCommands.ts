@@ -4,9 +4,12 @@ import { AxiosResponse } from 'axios';
 import { teamsCollectionResponse } from '../../types';
 
 export const getCommands = {
-  getCommands(params: IParams): Promise<AxiosResponse<teamsCollectionResponse>> {
-    return baseRequestAxios.get<teamsCollectionResponse>('/api/Team/GetTeams', {
-      params,
-    });
+  getCommands(): Promise<AxiosResponse<teamsCollectionResponse>> {
+    return baseRequestAxios.get<teamsCollectionResponse>(
+      '/api/Team/GetTeams'
+      //   {
+      //   params,
+      // }
+    );
   },
 };
