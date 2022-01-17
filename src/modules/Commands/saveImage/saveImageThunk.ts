@@ -1,17 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ISignUpResponse, ResultCodesEnum } from '../../../api/dto/IAutorization';
-import { SignInInputs } from 'types/formTypes';
-import { authApi } from '../../../api/requets/athorization';
+import { ResultCodesEnum } from '../../../api/dto/IAutorization';
 import { AxiosError, AxiosResponse } from 'axios';
+import { savePicture } from '../../../api/requets/saveImage';
 
-export const loginData = createAsyncThunk(
-  'login/loginData',
-  async ({ Login, Password }: SignInInputs, { rejectWithValue }) => {
+export const saveImage = createAsyncThunk(
+  'image/saveImg',
+  async (formData: File | FormData, { rejectWithValue }) => {
     try {
-      const resp: AxiosResponse<ISignUpResponse> = await authApi.signIn({
-        Login,
-        Password,
-      });
+      const resp: AxiosResponse<string> = await savePicture.save(formData);
 
       if (resp.status === ResultCodesEnum.Success) {
         return resp.data;

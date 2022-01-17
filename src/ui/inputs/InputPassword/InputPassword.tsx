@@ -2,7 +2,7 @@ import React from 'react';
 import { useCallback, useState } from 'react';
 import eyeClose from '../../../assets/icon/eyeClose.svg';
 import eyeOpen from '../../../assets/icon/eyeOpen.svg';
-import { IInputProps } from '../../../types';
+import { IInputProps } from 'types/formTypes';
 import s from '../styleInput.module.scss';
 
 export const InputPassword = <T, L>({ register, name, label }: IInputProps<T, L>): JSX.Element => {

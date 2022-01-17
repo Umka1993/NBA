@@ -3,10 +3,9 @@ import s from './header.module.scss';
 import menu from 'assets/icon/menu.png';
 import logo from 'assets/icon/logo.png';
 import profilePhoto from 'assets/icon/profile.png';
-import { useAppSelector } from '../../../../core/redux/hooks/redux';
 
 export const Header = (): JSX.Element => {
-  const { userName } = useAppSelector((state) => state.loginSliceReducer);
+  const userName = localStorage.getItem('Name');
   return (
     <div className={s.header}>
       <div className={s.wrap}>

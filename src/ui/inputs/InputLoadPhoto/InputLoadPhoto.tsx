@@ -1,14 +1,19 @@
 import s from '../styleInput.module.scss';
 import React, { useEffect, useState } from 'react';
 import loadPhoto from 'assets/icon/loadPhoto.png';
-import { IInputProps } from '../../../types';
+import { IInputPhoto } from 'types/formTypes';
 import { useDropzone } from 'react-dropzone';
 
-export const InputLoadPhoto = <T, L>({ register, name, value }: IInputProps<T, L>): JSX.Element => {
+export const InputLoadPhoto = <T, L>({
+  register,
+  name,
+  value,
+  getPicture,
+}: IInputPhoto): JSX.Element => {
   const [image, setImage] = useState<File>();
   const [preview, setPreview] = useState<string | null>();
 
-  const { getRootProps, getInputProps } = useDropzone({
+  const { getRootProps } = useDropzone({
     accept: 'image/*',
     onDrop: (acceptedFiles) => {
       acceptedFiles.map((files) => setImage(files));
@@ -17,6 +22,7 @@ export const InputLoadPhoto = <T, L>({ register, name, value }: IInputProps<T, L
   const getFile = (file: File): void => {
     if (file) {
       setImage(file);
+      getPicture(file);
     }
   };
 
@@ -24,7 +30,8 @@ export const InputLoadPhoto = <T, L>({ register, name, value }: IInputProps<T, L
     if (image) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPreview(reader.result as string);
+        const result = reader.result as string;
+        setPreview(result);
       };
       reader.readAsDataURL(image);
     } else {
@@ -57,8 +64,8 @@ export const InputLoadPhoto = <T, L>({ register, name, value }: IInputProps<T, L
         <input
           {...register(name, { required: 'This is required.' })}
           id={name}
-          value={value}
           type="file"
+          value={value}
           className={s.inputPhoto}
           accept="image/png, image/gif, image/jpeg"
           onChange={(event) => {

@@ -1,88 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './netTeams.module.scss';
-import teamImg from 'assets/icon/teamImg.png';
+import { useAppSelector } from '../../../../../../core/redux/hooks/redux';
+import { NavigationFooter } from '../../../../../../ui/NavigationFooter/NavigationFooter';
+import { useDispatch } from 'react-redux';
+import { teams } from '../../../../../../modules/Commands/getComands/commandsThunk';
+import { Team } from './Team/Team';
 
 export const NetTeams = () => {
+  const newCommand = useAppSelector((state) => state.addCommandReducer.newCommand);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(teams());
+  }, [newCommand]);
+
   return (
     <div className={s.wrapper}>
-      <div className={s.teamCard}>
-        <div className={s.mainCard}>
-          <div className={s.teamImg}>
-            <img src={teamImg} alt="teamImg" />
-          </div>
-        </div>
-        <div className={s.teamInfo}>
-          <div className={s.teamWrap}>
-            <p className={s.teamName}>Portland trail blazers</p>
-            <p className={s.teamBirthday}>Year of foundation: 1970</p>
-          </div>
-        </div>
-      </div>
-      <div className={s.teamCard}>
-        <div className={s.mainCard}>
-          <div className={s.teamImg}>
-            <img src={teamImg} alt="teamImg" />
-          </div>
-        </div>
-        <div className={s.teamInfo}>
-          <div className={s.teamWrap}>
-            <p className={s.teamName}>Portland trail blazers</p>
-            <p className={s.teamBirthday}>Year of foundation: 1970</p>
-          </div>
-        </div>
-      </div>
-      <div className={s.teamCard}>
-        <div className={s.mainCard}>
-          <div className={s.teamImg}>
-            <img src={teamImg} alt="teamImg" />
-          </div>
-        </div>
-        <div className={s.teamInfo}>
-          <div className={s.teamWrap}>
-            <p className={s.teamName}>Portland trail blazers</p>
-            <p className={s.teamBirthday}>Year of foundation: 1970</p>
-          </div>
-        </div>
-      </div>
-      <div className={s.teamCard}>
-        <div className={s.mainCard}>
-          <div className={s.teamImg}>
-            <img src={teamImg} alt="teamImg" />
-          </div>
-        </div>
-        <div className={s.teamInfo}>
-          <div className={s.teamWrap}>
-            <p className={s.teamName}>Portland trail blazers</p>
-            <p className={s.teamBirthday}>Year of foundation: 1970</p>
-          </div>
-        </div>
-      </div>
-      <div className={s.teamCard}>
-        <div className={s.mainCard}>
-          <div className={s.teamImg}>
-            <img src={teamImg} alt="teamImg" />
-          </div>
-        </div>
-        <div className={s.teamInfo}>
-          <div className={s.teamWrap}>
-            <p className={s.teamName}>Portland trail blazers</p>
-            <p className={s.teamBirthday}>Year of foundation: 1970</p>
-          </div>
-        </div>
-      </div>
-      <div className={s.teamCard}>
-        <div className={s.mainCard}>
-          <div className={s.teamImg}>
-            <img src={teamImg} alt="teamImg" />
-          </div>
-        </div>
-        <div className={s.teamInfo}>
-          <div className={s.teamWrap}>
-            <p className={s.teamName}>Portland trail blazers</p>
-            <p className={s.teamBirthday}>Year of foundation: 1970</p>
-          </div>
-        </div>
-      </div>
+      <Team />
+      <NavigationFooter />
     </div>
   );
 };

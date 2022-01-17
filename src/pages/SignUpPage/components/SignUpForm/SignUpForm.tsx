@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import s from '../../../SignInPage/components/SignInForm/SignInForm.module.scss';
 import { InputPassword } from '../../../../ui/inputs/InputPassword/InputPassword';
 import { useForm } from 'react-hook-form';
-import { FormNames, LabelNames } from '../../../../types';
+import { FormNames, LabelNames } from 'types/formTypes';
 import { InputAgreement } from '../../../../ui/inputs/InputAgreement/InputAgreement';
 import { Link, useNavigate } from 'react-router-dom';
 import { registrationData } from '../../../../modules/authorization/registration/registrationThunk';

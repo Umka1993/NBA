@@ -1,18 +1,19 @@
-import { IState } from '../../types';
-import { ResultCodesEnum } from '../../api/dto/IAutorization';
+import { IErrors } from 'types/reduxTypes';
+import { IErrorMessage, ResultCodesEnum } from '../../api/dto/IAutorization';
 
-export const errorProcess = (state: IState, status: number): void => {
-  if (status === ResultCodesEnum.DuplicateData) {
-    state.error = true;
-    state.message = 'A user with such data already exists.';
-  } else if (status === ResultCodesEnum.ServerError) {
-    state.error = true;
-    state.message = 'Sorry, server error';
-  } else if (status === ResultCodesEnum.Unauthorized) {
-    state.error = true;
-    state.message = 'Incorrect login or password';
-  } else {
-    state.error = true;
-    state.message = 'Oops...:-)';
+export const errorProcess = (errors: IErrors): void => {
+  errors.error = true;
+  switch (errors.status) {
+    case ResultCodesEnum.DuplicateData:
+      errors.message = IErrorMessage.DuplicateData;
+      break;
+    case ResultCodesEnum.ServerError:
+      errors.message = IErrorMessage.ServerError;
+      break;
+    case ResultCodesEnum.Unauthorized:
+      errors.message = IErrorMessage.Unauthorized;
+      break;
+    default:
+      errors.message = IErrorMessage.OtherError;
   }
 };

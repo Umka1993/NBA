@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IData, ResultCodesEnum } from '../../../api/dto/IAutorization';
-import { authApi } from '../../../api/requets.ts/athorization';
+import { authApi } from '../../../api/requets/athorization';
 
 export const registrationData = createAsyncThunk(
   'registration/registrationData',

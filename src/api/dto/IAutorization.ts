@@ -33,3 +33,10 @@ export interface Error {
     type: string;
   };
 }
+
+export enum IErrorMessage {
+  OtherError = 'Oops...:-)',
+  ServerError = 'Sorry, server error',
+  DuplicateData = ' with such data already exists.',
+  Unauthorized = 'Incorrect login or password',
+}

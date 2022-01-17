@@ -2,12 +2,7 @@ import React from 'react';
 import s from './breadcrumbsNav.module.scss';
 import { useNavigate } from 'react-router-dom';
 
-interface ICrumbs {
-  crumbs: string[];
-  selected: (crumb: string) => void;
-}
-
-export const BreadcrumbsNav = ({ crumbs, selected }: ICrumbs): JSX.Element => {
+export const BreadcrumbsNav = ({ crumbs }: { crumbs: string[] }): JSX.Element => {
   const navigate = useNavigate();
 
   function isLast(index: number) {

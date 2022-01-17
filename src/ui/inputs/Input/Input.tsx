@@ -1,5 +1,5 @@
 import s from '../styleInput.module.scss';
-import { IInputProps } from '../../../types';
+import { IInputProps } from 'types/formTypes';
 import React from 'react';
 
 export const Input = <T, L>({ register, name, label }: IInputProps<T, L>): JSX.Element => {
@@ -7,7 +7,13 @@ export const Input = <T, L>({ register, name, label }: IInputProps<T, L>): JSX.E
     <div className={s.inputBlock}>
       <label htmlFor={name}>{label}</label>
       <div className={s.inputWrap}>
-        <input {...register(name, { required: 'This is required.' })} id={name} type="text" />
+        <input
+          {...register(name, {
+            required: 'This is required.',
+          })}
+          id={name}
+          type="text"
+        />
       </div>
     </div>
   );
