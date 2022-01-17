@@ -1,9 +1,10 @@
 import { AxiosResponse } from 'axios';
 import baseRequestAxios from '../baseRequest';
-import { IDataCommandRequest, INewCommandResponse, teamsCollectionResponse } from '../../types';
+import { INewCommandResponse } from 'types/reduxTypes';
+import { commandsData } from 'types/formTypes';
 
 export const sendCommand = {
-  add(dataCommand: IDataCommandRequest): Promise<AxiosResponse<INewCommandResponse>> {
+  add(dataCommand: commandsData): Promise<AxiosResponse<INewCommandResponse>> {
     return baseRequestAxios.post<INewCommandResponse>('/api/Team/Add', dataCommand);
   },
 };

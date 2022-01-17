@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './teamsComponent.module.scss';
 import { Outlet } from 'react-router';
 import { useAppSelector } from '../../../../core/redux/hooks/redux';
 import { Loading } from '../../../../ui/Loading/Loading';
 import { IsError } from '../../../../ui/IsError/IsError';
+import { IErrorMessage } from '../../../../api/dto/IAutorization';
 
 export interface IParams {
   name: string | null;
@@ -14,32 +15,26 @@ export interface IParams {
 export const TeamsComponent = (): JSX.Element => {
   // const userName = localStorage.getItem('Name');
 
-  const { error, isLoading, message } = useAppSelector((state) => state.addCommandReducer);
+  const { error, isLoading, message } = useAppSelector((state) => state.addCommandReducer.errors);
+  const [errorMessage, setErrorMessage] = useState('');
+
   useEffect(() => {
     // dispatch(teams());
-  }, [error, isLoading]);
+    if (message === IErrorMessage.DuplicateData) {
+      const commandErrorMessage = `A command${message}`;
+      setErrorMessage(commandErrorMessage);
+    } else {
+      setErrorMessage(message);
+    }
+  }, [error, isLoading, message]);
 
-  let commandErrorMessage = message;
-  if (message === ' with such data already exists.') {
-    commandErrorMessage = `А command ${message}`;
+  if (isLoading) {
+    return <Loading />;
   }
-
-  // const params: IParams = {
-  //   name: '9996',
-  //   Page: 1,
-  //   PageSize: 6,
-  // };
-  // console.log(Outlet);
-
   return (
-    <>
-      {isLoading && <Loading />}
-      {!isLoading && (
-        <div className={s.contentWrap}>
-          {error && <IsError message={commandErrorMessage} />}
-          <Outlet />
-        </div>
-      )}
-    </>
+    <div className={s.contentWrap}>
+      {error && <IsError message={errorMessage} />}
+      <Outlet />
+    </div>
   );
 };

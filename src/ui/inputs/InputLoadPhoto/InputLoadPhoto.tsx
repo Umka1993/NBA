@@ -1,7 +1,7 @@
 import s from '../styleInput.module.scss';
 import React, { useEffect, useState } from 'react';
 import loadPhoto from 'assets/icon/loadPhoto.png';
-import { IInputPhoto } from '../../../types';
+import { IInputPhoto } from 'types/formTypes';
 import { useDropzone } from 'react-dropzone';
 
 export const InputLoadPhoto = <T, L>({

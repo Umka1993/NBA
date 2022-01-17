@@ -1,5 +1,5 @@
 import s from '../styleInput.module.scss';
-import { IInputProps } from '../../../types';
+import { IInputProps } from 'types/formTypes';
 import React from 'react';
 
 export const Input = <T, L>({ register, name, label }: IInputProps<T, L>): JSX.Element => {

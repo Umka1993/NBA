@@ -1,11 +1,10 @@
 import baseRequestAxios from '../baseRequest';
-import { IParams } from '../../pages/MainPage/components/TeamsComponent/TeamsComponent';
 import { AxiosResponse } from 'axios';
-import { teamsCollectionResponse } from '../../types';
+import { INewCommandResponse, TeamsCollectionResponse } from 'types/reduxTypes';
 
 export const getCommands = {
-  getCommands(): Promise<AxiosResponse<teamsCollectionResponse>> {
-    return baseRequestAxios.get<teamsCollectionResponse>(
+  getCommands(): Promise<AxiosResponse<TeamsCollectionResponse<INewCommandResponse>>> {
+    return baseRequestAxios.get<TeamsCollectionResponse<INewCommandResponse>>(
       '/api/Team/GetTeams'
       //   {
       //   params,

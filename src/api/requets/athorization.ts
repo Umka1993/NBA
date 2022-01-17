@@ -1,6 +1,6 @@
 import { IData, ISignUpResponse } from '../dto/IAutorization';
 import { AxiosResponse } from 'axios';
-import { SignInInputs } from '../../types';
+import { SignInInputs } from 'types/formTypes';
 import baseRequestAxios from '../baseRequest';
 
 export const authApi = {

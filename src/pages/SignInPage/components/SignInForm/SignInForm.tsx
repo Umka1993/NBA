@@ -2,7 +2,7 @@ import React from 'react';
 import s from './SignInForm.module.scss';
 import { InputPassword } from 'ui/inputs/InputPassword/InputPassword';
 import { useForm } from 'react-hook-form';
-import { LabelNames, SignInInputs } from 'types';
+import { LabelNames, SignInInputs } from 'types/formTypes';
 import { Link, useNavigate } from 'react-router-dom';
 import { Input } from 'ui/inputs/Input/Input';
 import { FormBtn } from 'ui/buttons/FormBtn/FormBtn';

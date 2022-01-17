@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { registrationData } from './registrationThunk';
-import { IState } from '../../../types';
+import { IErrors } from 'types/reduxTypes';
 import { errorProcess } from '../errorProcess';
 import { Error, ISignUpResponse } from '../../../api/dto/IAutorization';
 
@@ -9,9 +9,7 @@ const registrationSlice = createSlice({
   initialState: {
     isLogin: false,
     isRegistration: false,
-    isLoading: false,
-    error: false,
-    message: '',
+    errors: {} as IErrors,
     token: '',
     userName: '',
     userAvatar: '',
@@ -19,14 +17,14 @@ const registrationSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(registrationData.pending, (state) => {
-      state.isLoading = true;
-      state.error = false;
+      state.errors.isLoading = true;
+      state.errors.error = false;
     });
     builder.addCase(
       registrationData.fulfilled.type,
       (state, action: PayloadAction<ISignUpResponse>) => {
-        state.isLoading = false;
-        state.error = false;
+        state.errors.isLoading = false;
+        state.errors.error = false;
         if (action.payload.avatarUrl) {
           state.userAvatar = action.payload.avatarUrl;
         }
@@ -36,11 +34,11 @@ const registrationSlice = createSlice({
     );
 
     builder.addCase(registrationData.rejected.type, (state, action: PayloadAction<Error>) => {
-      state.isLoading = false;
-      const status = action.payload.response.status;
-      errorProcess(state, status);
+      state.errors.isLoading = false;
+      state.errors.status = action.payload.response.status;
+
+      errorProcess(state.errors);
     });
   },
 });
-// export const {setAuthData} = authorizationSlice.actions;
 export default registrationSlice.reducer;

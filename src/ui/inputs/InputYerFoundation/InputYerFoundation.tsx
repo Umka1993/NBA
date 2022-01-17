@@ -4,14 +4,14 @@ import s from '../styleInput.module.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 import ReactDatePicker from 'react-datepicker';
 import { ControllerRenderProps } from 'react-hook-form';
-import { ITeamFormNames } from '../../../types';
+import { ITeamFormNames } from 'types/formTypes';
 
 export const InputYearFoundation = ({
   field,
   name,
 }: {
   name: string;
-  field: ControllerRenderProps<ITeamFormNames, 'yearFoundation'>;
+  field: ControllerRenderProps<ITeamFormNames, 'foundationYear'>;
 }): JSX.Element => {
   const [startDate, setStartDate] = useState('');
 
