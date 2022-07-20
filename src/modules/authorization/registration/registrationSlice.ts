@@ -35,8 +35,8 @@ const registrationSlice = createSlice({
 
     builder.addCase(registrationData.rejected.type, (state, action: PayloadAction<Error>) => {
       state.errors.isLoading = false;
+      console.log(action);
       state.errors.status = action.payload.response.status;
-
       errorProcess(state.errors);
     });
   },

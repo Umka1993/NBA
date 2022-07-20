@@ -24,6 +24,7 @@ const teamsSlice = createSlice({
         state.errors.isLoading = false;
         state.errors.error = false;
         state.teamsCollection = action.payload;
+        console.log(state.teamsCollection);
       }
     );
 

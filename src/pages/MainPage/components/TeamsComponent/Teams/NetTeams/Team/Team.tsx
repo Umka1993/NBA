@@ -2,9 +2,11 @@ import React from 'react';
 import s from './team.module.scss';
 
 import { useAppSelector } from '../../../../../../../core/redux/hooks/redux';
+import { logDOM } from '@testing-library/react';
 
 export const Team = () => {
   const teamsCollection = useAppSelector((state) => state.teamsReducer.teamsCollection);
+
   const team = teamsCollection.map((team) => {
     return (
       <div className={s.teamCard} key={team.id}>

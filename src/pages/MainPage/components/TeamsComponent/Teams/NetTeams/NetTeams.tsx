@@ -5,6 +5,7 @@ import { NavigationFooter } from '../../../../../../ui/NavigationFooter/Navigati
 import { useDispatch } from 'react-redux';
 import { teams } from '../../../../../../modules/Commands/getComands/commandsThunk';
 import { Team } from './Team/Team';
+import { log } from 'util';
 
 export const NetTeams = () => {
   const newCommand = useAppSelector((state) => state.addCommandReducer.newCommand);

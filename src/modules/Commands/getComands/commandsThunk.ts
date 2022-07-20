@@ -10,6 +10,7 @@ export const teams = createAsyncThunk('teams/teams', async (_, { rejectWithValue
       await getCommands.getCommands();
 
     if (resp.status === ResultCodesEnum.Success) {
+      console.log('resp', resp);
       return resp.data.data;
     }
   } catch (error) {

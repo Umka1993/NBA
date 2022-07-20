@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { saveImage } from '../../../../../../modules/Commands/saveImage/saveImageThunk';
 import { useAppSelector } from '../../../../../../core/redux/hooks/redux';
 import { InputYearFoundation } from '../../../../../../ui/inputs/InputYerFoundation/InputYerFoundation';
-import { addCommand } from '../../../../../../modules/Commands/addComand/addCommandThunk';
+import { addTeam } from '../../../../../../modules/Commands/addComand/addCommandsThunk';
 
 // const Controller = ({ control, register, name, rules, render }) => {
 //   const props = register(name);
@@ -39,7 +39,7 @@ export const AddTeamForm = () => {
         conference: dataForm.conference,
         imageUrl: imageUrl,
       };
-      dispatch(addCommand(dataCommand));
+      dispatch(addTeam(dataCommand));
     }
   }, [imageUrl]);
 
